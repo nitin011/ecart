@@ -1,0 +1,96 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+	
+    "license": "MIT",
+    "require": {
+        "php": "^7.4.13|^8.0",
+        "ext-json": "*",
+        "barryvdh/laravel-dompdf": "^0.8.7",
+        "darryldecode/cart": "^4.2.1",
+        "fabpot/goutte": "^v4.0.1",
+        "fideloper/proxy": "^4.4.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "jonnyw/php-phantomjs": "@dev",
+        "laravel/framework": "^v8.33.1",
+        "laravel/tinker": "^v2.6.1",
+        "laravelcollective/html": "^6.2.1",
+        "livewire/livewire": "^v2.4.1",
+        "maatwebsite/excel": "^3.1.29",
+        "paypal/rest-api-sdk-php": "^1.14.0",
+        "rap2hpoutre/fast-excel": "^v2.5.0",
+        "staudenmeir/laravel-adjacency-list": "^v1.6.1",
+        "symfony/console": "^5.2",
+        "symfony/process": "^v5.2.4",
+        "twilio/sdk": "^6.19.0",
+        "webreinvent/laravel-nestable": "dev-master",
+        "yajra/laravel-datatables-oracle": "~v9.17.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.8",
+        "facade/ignition": "^2.3.6",
+        "fzaninotto/faker": "^1.9.1",
+        "laravel/ui": "^3.0",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "bin-dir": "bin",
+		"platform-check": false
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/",
+            "database/seeders",
+            "database/factories"
+        ],
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi",
+            "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "php artsian clear-compiled",
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ],
+        "post-update-cmd": [
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ]
+    }
+}

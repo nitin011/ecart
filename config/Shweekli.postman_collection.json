@@ -1,0 +1,1256 @@
+{
+	"info": {
+		"_postman_id": "c192d2df-04d3-41ca-901e-aca3b3face24",
+		"name": "ee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\":\"Tanisha\",\r\n    \"last_name\":\"Kumawat\",\r\n    \"user_email\":\"hemantkumawat275+20@gmail.com\",\r\n    \"user_phone\":\"77777777777\",\r\n    \"user_password\":\"12345678\",\r\n    \"device_id\":\";alsikdhfpjlo;akljszxfd ;l jasfk;jzsldkklfgnh djre5kfd'h;ltjy[ktpf6oy'okji\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}register",
+					"host": [
+						"{{domain}}register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_phone\":\"77777777777\",\r\n    \"user_password\":12345678,\r\n    \"device_id\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}login",
+					"host": [
+						"{{domain}}login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_phone\":77777777777\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}forget_password",
+					"host": [
+						"{{domain}}forget_password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_phone\":7821802049,\r\n    \"otp\":3160,\r\n    \"user_password\":12345678\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}change_password",
+					"host": [
+						"{{domain}}change_password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}",
+						"description": "User Authorization Key if user Logged in.",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}myprofile",
+					"host": [
+						"{{domain}}myprofile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Countries & Cities",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}countries",
+					"host": [
+						"{{domain}}countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Hemant1\",\r\n    \"last_name\":\"Kumawat1\",\r\n    \"receiver_phone\": 7854521323425,\r\n    \"house_or_flat_no\": \"542\",\r\n    \"address_line_1\": \"Tirupatihaffr\",\r\n    \"address_line_2\": \"13 A Tirupati vihar niwaru linkff\",\r\n    \"latitude\":\"\",\r\n    \"longitude\": \"\",\r\n    \"is_default\": 1,\r\n    \"country_id\":32,\r\n    \"city_id\":32,\r\n    \"post_code\":\"54kjfs\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}add_address",
+					"host": [
+						"{{domain}}add_address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address_id\": 11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}select_address",
+					"host": [
+						"{{domain}}select_address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 10,\r\n    \"first_name\": \"Hemanttttt\",\r\n    \"last_name\": \"Kumawat\",\r\n    \"receiver_phone\": \"7854521325\",\r\n    \"house_or_flat_no\": \"54\",\r\n    \"address_line_1\": \"Tirupatihar\",\r\n    \"address_line_2\": \"13 A Tirupati vihar niwaru linkddd\",\r\n    \"latitude\": null,\r\n    \"longitude\": null,\r\n    \"is_default\": 1,\r\n    \"country_id\": 73,\r\n    \"city_id\": 25,\r\n    \"post_code\": \"54kjfs\",\r\n    \"deleted_at\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}edit_address",
+					"host": [
+						"{{domain}}edit_address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address_id\": 11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}remove_address",
+					"host": [
+						"{{domain}}remove_address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}cat",
+					"host": [
+						"{{domain}}cat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product Variants",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\": 110678,\r\n    \"lat\": null,\r\n    \"lng\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}varient",
+					"host": [
+						"{{domain}}varient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delivery Time Slot( time slot)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"selected_date\":\"Thu, 24 Apr 2021 18:26:44\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}timeslot",
+					"host": [
+						"{{domain}}timeslot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Coupons List",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cart_value\":434 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}couponlist",
+					"host": [
+						"{{domain}}couponlist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make an Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"varient_id\": 32,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"varient_id\": 33,\r\n            \"quantity\": 4\r\n        },\r\n        {\r\n            \"varient_id\": 34,\r\n            \"quantity\": 3\r\n        },\r\n        {\r\n            \"varient_id\": 35,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"coupon_id\":4,\r\n    \"address_id\": 34,\r\n    \"time_slot\":\"9 AM - 11 AM\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}make_an_order",
+					"host": [
+						"{{domain}}make_an_order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Active Orders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}ongoing_orders",
+					"host": [
+						"{{domain}}ongoing_orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Cancel Reagons List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}cancelling_reasons",
+					"host": [
+						"{{domain}}cancelling_reasons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel an Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"order_id\":11,\r\n    \"cancelling_reason\":\"I changed my mind.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}delete_order",
+					"host": [
+						"{{domain}}delete_order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Top Selling",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"order_id\":11,\r\n    \"cancelling_reason\":\"I changed my mind.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}top_selling",
+					"host": [
+						"{{domain}}top_selling"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Checkout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}checkout",
+					"host": [
+						"{{domain}}checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Completed Orders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}completed_orders",
+					"host": [
+						"{{domain}}completed_orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recent Selling Products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}recent_selling",
+					"host": [
+						"{{domain}}recent_selling"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"keyword\":\"sfasdfa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}search",
+					"host": [
+						"{{domain}}search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Addresses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address_id\": 349\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}show_address",
+					"host": [
+						"{{domain}}show_address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Currency",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}currency",
+					"host": [
+						"{{domain}}currency"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Min Max Cart Value",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}minmax",
+					"host": [
+						"{{domain}}minmax"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review on Delivery",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"order_id\":10,\r\n    \"rating\":4,\r\n    \"description\":\"Great material ... One can buy as the color is cute.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}review_on_delivery",
+					"host": [
+						"{{domain}}review_on_delivery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "About Us",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}about_us",
+					"host": [
+						"{{domain}}about_us"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Terms And Conditions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}terms_and_conditions",
+					"host": [
+						"{{domain}}terms_and_conditions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Banners",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}banner",
+					"host": [
+						"{{domain}}banner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}categories",
+					"host": [
+						"{{domain}}categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Products By Category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category_id\":17377\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}products_by_category",
+					"host": [
+						"{{domain}}products_by_category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notify By",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category_id\":17377\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}notify_by",
+					"host": [
+						"{{domain}}notify_by"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Notify By",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sms\": true,\r\n    \"email\": true,\r\n    \"app\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}update_or_create_notify_by",
+					"host": [
+						"{{domain}}update_or_create_notify_by"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Promotional Banners List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}promotional_banners",
+					"host": [
+						"{{domain}}promotional_banners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Notifications",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}notifications",
+					"host": [
+						"{{domain}}notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notification Seen",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"notification_id\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}notification_seen",
+					"host": [
+						"{{domain}}notification_seen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mark All Notifications as Read",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}mark_all_as_read",
+					"host": [
+						"{{domain}}mark_all_as_read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Notifications",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}delete_all_notifications",
+					"host": [
+						"{{domain}}delete_all_notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancelled orders List",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"notification_id\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}cancelled_orders",
+					"host": [
+						"{{domain}}cancelled_orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\":\"Hemant Kumawat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}edit_profile",
+					"host": [
+						"{{domain}}edit_profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App Configurations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"notification_id\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}app_configurations",
+					"host": [
+						"{{domain}}app_configurations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Home Page API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"notification_id\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}homepage",
+					"host": [
+						"{{domain}}homepage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Home Categories API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"notification_id\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}homecat",
+					"host": [
+						"{{domain}}homecat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Profile Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "User Authorization Key if user Logged in.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{Authorization}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\":\"Hemant Kumawat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}edit_profile",
+					"host": [
+						"{{domain}}edit_profile"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{API_HEADER_SECRET_KEY}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "apiSecretKey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "http://18.222.204.52/ee/public/api/"
+		},
+		{
+			"key": "API_HEADER_SECRET_KEY",
+			"value": "FL2XQtiPbzQGqDK0XeivFsmJEf9Nb22T"
+		},
+		{
+			"key": "Authorization",
+			"value": "3e57vnhvu9wjShFS"
+		},
+		{
+			"key": "livehost",
+			"value": "http://18.222.204.52/ee/public/api/"
+		},
+		{
+			"key": "localhost",
+			"value": "http://ee.test/api/"
+		}
+	]
+}

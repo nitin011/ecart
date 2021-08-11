@@ -1,0 +1,290 @@
+//main: main.less
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1181px;
+    }
+}
+
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+
+    .product-list .all-product-list .product-single .bottom-product .left-content .minus-btn,
+    .product-list .all-product-list .product-single .bottom-product .left-content .plus-btn {
+        padding: 5px 8px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {}
+
+
+/* Tablets and laptop */
+
+
+@media (min-width: 320px) and (max-width: 1023px) {
+
+    .snack-store-section h5,
+    .drink-and-beverage-store-section h5,
+    .about-us-ee .content-about .padding-about-us-right {
+        padding-right: 15px;
+        padding-left : 15px;
+    }
+
+    .main_header {
+        display: none;
+    }
+
+    .mobile-header {
+        display   : block;
+        position  : fixed;
+        width     : 100%;
+        top       : 0;
+        z-index   : 999;
+        background: #fff;
+        box-shadow: 0 3px 6px -6px #000;
+    }
+
+    .mobile-header .right-profile-section img {
+        height: 20px;
+    }
+
+    .mobile-header .fixed-right-header {
+        position  : absolute;
+        top       : 0px;
+        right     : 40px;
+        box-shadow: none;
+    }
+
+    .mobile-header .navbar-nav.right-nav {
+        flex-direction: row;
+        align-items   : center;
+    }
+
+    li.nav-item.dropdown {
+        margin-left: 15px;
+    }
+
+    li.nav-item.dropdown p {
+        white-space: normal;
+    }
+
+    .shopping-cart-sec .iq-sub-card img,
+    .like-sec .iq-sub-card img {
+        height: 15px !important;
+    }
+
+    .menu-item .navbar-nav .dropdown-menu {
+        position: relative;
+    }
+
+    .media-body {
+        white-space: normal;
+    }
+
+    .search-sec input {
+        width     : 100%;
+        border    : 1px solid #d2d2d2;
+        padding   : 8px 10px;
+        margin-top: 10px;
+    }
+
+    .search-sec .see-all-btn {
+        width        : 100%;
+        margin-top   : 10px;
+        margin-bottom: 0;
+    }
+
+    .search-sec .dropdown-menu {
+        padding: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .mobile-header .fixed-right-header {
+        top  : 25px;
+        right: 40px;
+    }
+
+    .banner {
+        margin-top: 105px;
+    }
+
+    .banner .carousel-caption {
+        bottom: 10%;
+    }
+
+    .top-categories-section .categories_product_inner .single_categories_product {
+        width: 50%;
+    }
+
+    .trending-products-section .trending-products-all,
+    .fruits-section .fruits-products-all,
+    .daily-staples-section .daily-staples-products-all,
+    .beauty-and-hygiene-section .beauty-and-hygiene-products-all,
+    .cleaning-staples-section .cleaning-products-all,
+    .home-and-kitchen-section .home-and-kitchen-products-all,
+    .product-list .all-product-list {
+        flex-wrap: wrap;
+    }
+
+    .trending-products-section .trending-products-all .trending-product-single,
+    .fruits-section .fruits-products-all .fruits-product-single,
+    .daily-staples-section .daily-staples-products-all .daily-staples-product-single,
+    .beauty-and-hygiene-section .beauty-and-hygiene-products-all .beauty-and-hygiene-product-single,
+    .product-list .all-product-list .product-single {
+        width        : 47%;
+        margin-bottom: 20px;
+    }
+
+    .cleaning-staples-section .cleaning-products-all .cleaning-product-single,
+    .home-and-kitchen-section .home-and-kitchen-products-all .home-and-kitchen-product-single {
+        width        : 30%;
+        margin-bottom: 20px;
+    }
+
+    .fruits-section .fruits-products-all .fruits-product-single .fruits-single-img {
+        height: 340px;
+    }
+}
+
+
+/*Smartphones Mobiles and Low Resolution Tablets*/
+@media (min-width: 320px) and (max-width: 767px) {
+    #mega-menu{
+        display: none;
+    }
+    .calendar-nav .left-btn {
+        left: 0% !important;
+    }
+
+    .calendar-nav .right-btn {
+        right: 0% !important;
+    }
+    .radio--group-inline-container_1 li {
+        width: 100%;
+        margin-right: 0px;
+    }
+    .main-title-left{
+        margin-bottom: 20px;
+    }
+    .product-dt-right {
+        margin-left: 0px;
+        padding    : 10px;
+    }
+    .bg-grey .arrordian-section .card .card-body .delivery-accordian .input-group .input-box{
+        width: 100%;
+    }
+
+    .main-title-tt {
+        display: block;
+    }
+
+    .see-all-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .product-dt-view {
+        padding-left : 0px;
+        padding-right: 0px;
+    }
+
+    .pdp-details ul li {
+        width       : 100%;
+        border-right: none;
+    }
+
+    .home-and-kitchen-section .home-and-kitchen-products-all .home-and-kitchen-product-single .home-and-kitchen-single-img,
+    .home-and-kitchen-section .home-and-kitchen-products-all,
+    .beauty-and-hygiene-section .beauty-and-hygiene-products-all,
+    .cleaning-staples-section .cleaning-products-all,
+    .daily-staples-section .daily-staples-products-all,
+    .fruits-section .fruits-products-all,
+    .trending-products-section .trending-products-all,
+    .brand-store-section .brand-store-products-all,
+    .all-product-list {
+        display: block !important;
+    }
+
+    .home-and-kitchen-section .home-and-kitchen-products-all .home-and-kitchen-product-single,
+    .beauty-and-hygiene-section .beauty-and-hygiene-products-all .beauty-and-hygiene-product-single,
+    .cleaning-staples-section .cleaning-products-all .cleaning-product-single,
+    .daily-staples-section .daily-staples-products-all .daily-staples-product-single,
+    .fruits-section .fruits-products-all .fruits-product-single,
+    .trending-products-section .trending-products-all .trending-product-single,
+    .top-categories-section .categories_product_inner .single_categories_product,
+    .brand-store-section .brand-store-products-all .brand-store-product-single,
+    .product-list .all-product-list .product-single {
+        width        : 100%;
+        margin-right : 0px;
+        margin-bottom: 20px;
+        display      : block;
+        padding-right: 0px;
+    }
+
+
+
+    .about-us-ee .content-about .single-histry-one {
+        margin-top: 25px;
+    }
+
+    .section-title-content h2 {
+        font-size: 24px;
+    }
+
+    .see-all-btn {
+        margin-bottom: 20px;
+    }
+
+    .fruits-section .fruits-products-all .fruits-product-single .fruits-single-img {
+        height: 100%;
+    }
+
+    .banner .carousel-caption {
+        bottom: -4px;
+    }
+
+    .banner .carousel-caption h2 {
+        line-height  : 22px;
+        font-size    : 22px;
+        margin-bottom: 10px;
+    }
+
+    .banner .carousel-caption p {
+        font-size  : 14px;
+        line-height: 14px;
+    }
+
+    .banner .carousel-caption .slide-btn {
+        margin-top: 20px;
+    }
+
+    .banner .carousel-caption .slide-btn a {
+        padding: 10px 20px;
+    }
+
+    .logo-image {
+        height: 40px;
+    }
+
+    .menu-icon {
+        height: 20px;
+    }
+
+    .banner {
+        margin-top: 70px;
+    }
+
+    .navbar-toggler {
+        float  : left !important;
+        z-index: 999;
+    }
+
+    .like-sec .dropdown-menu,
+    .shopping-cart-sec .dropdown-menu,
+    .profile-sec .dropdown-menu,
+    .search-sec .dropdown-menu {
+        width: 200px;
+    }
+
+}
