@@ -32,7 +32,7 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{$products->product_name}}</td>
                                     <td> {{ $products->category->title??'--' }}</td>
-                                    <td><img src="{{ $products->product_image_url }}" alt="image"
+                                    <td><img src="{{ asset($products->product_image_url) }}" alt="image"
                                              style="width:50px;height:50px; border-radius:50%"/></td>
                                     <td class="td-actions text-right">
                                         <a href="{{ route('EditProduct',$products->product_id)}}" rel="tooltip"

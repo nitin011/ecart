@@ -1,3 +1,5 @@
+
+@if(!empty($setting->field))
 @switch($setting->field['type'])
     @case('text')
     <input type="text" name="settings[{{ $setting->key }}]" class="{{ $setting->field['classes']??null }}"
@@ -73,3 +75,4 @@
     {!! 'TextEditor' !!}
     @break
 @endswitch
+@endif

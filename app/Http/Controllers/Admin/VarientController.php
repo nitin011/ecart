@@ -20,9 +20,9 @@ class VarientController extends Controller
         $this->imageRepository = $imageRepository;
     }
 
-    public function varient(Request $request)
+    public function varient(Request $request,$id)
     {
-        $id = $request->id;
+       
         $p = Product::query()
             ->where('product_id', $id)
             ->first();

@@ -64,7 +64,7 @@ Route::prefix('admin')->group(function () {
          * Product Varient
          */
         Route::get('varient/{id}', 'VarientController@varient')->name('variant');
-        Route::get('varient/add/{id}', 'VarientController@Addproduct')->name('add-varient');
+        Route::get('varient/add/{id?}', 'VarientController@Addproduct')->name('add-varient');
         Route::post('varient/add/new', 'VarientController@AddNewproduct')->name('AddNewvarient');
         Route::get('varient/edit/{id}', 'VarientController@Editproduct')->name('edit-varient');
         Route::post('varient/update/{id}', 'VarientController@Updateproduct')->name('update-varient');

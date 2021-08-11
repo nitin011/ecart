@@ -113,7 +113,7 @@ class ProductController extends Controller
                     'description' => $description,
                     'short_description' => is_null($short_description) ? 'null' : $short_description,
                 ]);
-            return redirect()->back()->withSuccess('Product Added Successfully');
+            return redirect()->route('add-varient', [$insertproduct])->withSuccess('Product Added Successfully');
         } else {
             return redirect()->back()->withErrors("Something Wents Wrong");
         }

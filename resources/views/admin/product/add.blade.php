@@ -10,7 +10,7 @@
                     <div class="card-header card-header-primary">
                         <h4 class="card-title float-left">Add Product</h4>
                         <div class="btn-group float-right">
-                            <a href="{{ route('add-varient') }}" class="btn btn-primary"> Add Variant</a>
+                            <!-- <a href="{{ route('add-varient') }}" class="btn btn-primary"> Add Variant</a> -->
                             <a href="{{ route('productlist') }}" class="btn btn-warning"><i
                                     class="fa fa-arrow-back"></i> Back</a>
                         </div>
