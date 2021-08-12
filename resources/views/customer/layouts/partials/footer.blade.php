@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="{{ assetUrl('theme/images/logo.png') }}" class="footer-logo">
+                <img src="{{ asset('theme/images/logo.png') }}" class="footer-logo">
                 <p>Far far away, behind the word
                     mountains, far from the countries
                     Vokalia and Consonantia, there live .</p>
@@ -11,15 +11,15 @@
                     <ul>
                         <li class="facebook">
                             <a href="{{ $site_configurations['facebook_profile_link'] }}" target="_blank">
-                                <img src="{{ assetUrl('theme/images/icons/facebook.svg') }}"></a>
+                                <img src="{{ asset('theme/images/icons/facebook.svg') }}"></a>
                         </li>
                         <li class="twitter">
                             <a href="{{ $site_configurations['twitter_profile_link'] }}" target="_blank">
-                                <img src="{{ assetUrl('theme/images/icons/twitter.svg') }}"></a>
+                                <img src="{{ asset('theme/images/icons/twitter.svg') }}"></a>
                         </li>
                         <li class="linkedin">
                             <a href="{{ $site_configurations['linkedin_profile_link'] }}" target="_blank">
-                                <img src="{{ assetUrl('theme/images/icons/linkedin.svg') }}"></a>
+                                <img src="{{ asset('theme/images/icons/linkedin.svg') }}"></a>
                         </li>
                     </ul>
                 </div>

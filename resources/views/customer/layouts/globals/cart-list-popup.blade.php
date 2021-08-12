@@ -23,11 +23,11 @@
                                 </div>
                                 <div class="popup-price-right-content">
                                     {{--<button class="edit-icon"><img
-                                            src="{{ assetUrl('theme/images/edit.svg') }}"
+                                            src="{{ asset('theme/images/edit.svg') }}"
                                             height="20px"></button>--}}
                                     <a onclick="deleteCartItem({{ $item->id }},true)"
                                        class="delete-icon btn"><img
-                                            src="{{ assetUrl('theme/images/trash.svg') }}"
+                                            src="{{ asset('theme/images/trash.svg') }}"
                                             height="20px"></a>
                                 </div>
                             </div>

@@ -10,10 +10,10 @@
                         <div class="welcome-text">
                             <ul>
                                 <li><img
-                                        src="{{ assetUrl('theme/images/call-white.png') }}">{{ $site_configurations['phone_number'] }}
+                                        src="{{ asset('theme/images/call-white.png') }}">{{ $site_configurations['phone_number'] }}
                                 </li>
                                 <li><img
-                                        src="{{ assetUrl('theme/images/mail-white.png') }}">{{ $site_configurations['email_address'] }}
+                                        src="{{ asset('theme/images/mail-white.png') }}">{{ $site_configurations['email_address'] }}
                                 </li>
                             </ul>
                         </div>
@@ -24,15 +24,15 @@
                                 <li class="facebook">
                                     <a href="{{ $site_configurations['facebook_profile_link'] }}" target="_blank">
                                         <img
-                                            src="{{ assetUrl('theme/images/icons/facebook.svg') }}"></a></li>
+                                            src="{{ asset('theme/images/icons/facebook.svg') }}"></a></li>
                                 <li class="twitter">
                                     <a href="{{ $site_configurations['twitter_profile_link'] }}" target="_blank">
                                         <img
-                                            src="{{ assetUrl('theme/images/icons/twitter.svg') }}"></a></li>
+                                            src="{{ asset('theme/images/icons/twitter.svg') }}"></a></li>
                                 <li class="linkedin">
                                     <a href="{{ $site_configurations['linkedin_profile_link'] }}" target="_blank">
                                         <img
-                                            src="{{ assetUrl('theme/images/icons/linkedin.svg') }}"></a></li>
+                                            src="{{ asset('theme/images/icons/linkedin.svg') }}"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -45,12 +45,12 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <a class="navbar-brand pull-left" href="{{ route('customer.index') }}">
-                        <img src="{{ assetUrl('theme/images/logo.png') }}" height="40px" class="logo-image">
+                        <img src="{{ asset('theme/images/logo.png') }}" height="40px" class="logo-image">
                     </a>
                     <button class="navbar-toggler navbar-toggler-right pull-right" type="button"
                             data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false"
                             aria-label="Toggle navigation">
-                        <img src="{{ assetUrl('theme/images/icons/menu-black.png') }}" class="menu-icon">
+                        <img src="{{ asset('theme/images/icons/menu-black.png') }}" class="menu-icon">
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navbar">
                         <div class="navbar-nav">
@@ -89,7 +89,7 @@
 
                             {{-- <li class="like-sec nav-item">
                                  --}}{{--<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                     <img src="{{ assetUrl('theme/images/heart.png') }}">
+                                     <img src="{{ asset('theme/images/heart.png') }}">
                                      <div class="budge">3</div>
                                  </a>--}}{{--
 
@@ -104,7 +104,7 @@
                                                  <div class="media align-items-center">
                                                      <div class="">
                                                          <img class="avatar-40 rounded"
-                                                              src="{{ assetUrl('theme/images/product-list') }}/1.png"
+                                                              src="{{ asset('theme/images/product-list') }}/1.png"
                                                               alt="">
                                                      </div>
                                                      <div class="media-body ml-3">
@@ -118,7 +118,7 @@
                                                  <div class="media align-items-center">
                                                      <div class="">
                                                          <img class="avatar-40 rounded"
-                                                              src="{{ assetUrl('theme/images/product-list') }}/2.png"
+                                                              src="{{ asset('theme/images/product-list') }}/2.png"
                                                               alt="">
                                                      </div>
                                                      <div class="media-body ml-3">
@@ -139,7 +139,7 @@
 
                             <li class="shopping-cart-sec nav-item">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                    <img src="{{ assetUrl('theme/images/cart.png') }}">
+                                    <img src="{{ asset('theme/images/cart.png') }}">
                                     <div class="badge badge-info cart-count">{{ \Cart::getContent()->count() }}</div>
                                 </a>
                                 <div class="dropdown-menu sub-dropdown" id="cart-list-popup">
@@ -159,7 +159,7 @@
                             @else
                                 <li class="profile-sec nav-item">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                        <img src="{{ assetUrl('theme/images/profile.png') }}">
+                                        <img src="{{ asset('theme/images/profile.png') }}">
                                     </a>
                                     <div class="dropdown-menu sub-dropdown">
                                         <div>
@@ -172,7 +172,7 @@
                                                    href="{{ route('customer.profile.show') }}">
                                                     <div class="media align-items-center">
                                                         <div class="rounded iq-card-icon iq-bg-primary">
-                                                            <img src="{{ assetUrl('theme/images/icons/user.svg') }}"
+                                                            <img src="{{ asset('theme/images/icons/user.svg') }}"
                                                                  height="50px">
                                                         </div>
                                                         <div class="media-body ml-3">
@@ -186,7 +186,7 @@
                                                    href="{{ route('customer.order.index') }}">
                                                     <div class="media align-items-center">
                                                         <div class="rounded iq-card-icon iq-bg-primary">
-                                                            <img src="{{ assetUrl('theme/images/icons/settings.svg') }}"
+                                                            <img src="{{ asset('theme/images/icons/settings.svg') }}"
                                                                  height="50px">
                                                         </div>
                                                         <div class="media-body ml-3">
@@ -201,7 +201,7 @@
                                                      document.getElementById('logout-form').submit();">
                                                     <div class="media align-items-center">
                                                         <div class="rounded iq-card-icon iq-bg-primary">
-                                                            <img src="{{ assetUrl('theme/images/icons/logout.svg') }}"
+                                                            <img src="{{ asset('theme/images/icons/logout.svg') }}"
                                                                  height="50px">
                                                         </div>
                                                         <div class="media-body ml-3">
@@ -243,7 +243,7 @@
                                 <div class="categories_title category-toggle d-flex">
                                     <h6 class="categori_toggle">Shop By Category</h6>
                                     <div class="img-right">
-                                        <img src="{{ assetUrl('theme/images/arrow-down.png') }}" class="text-right">
+                                        <img src="{{ asset('theme/images/arrow-down.png') }}" class="text-right">
                                     </div>
                                 </div>
                             </div>
@@ -253,7 +253,7 @@
                                         <a href="{{ route('customer.products.by-category',$category['cat_id']) }}"
                                            title="" class="dropdown text-decoration-none">
                                             {{--<span class="menu-img">
-                                                <img src="{{ assetUrl($category->image) }}"
+                                                <img src="{{ asset($category->image) }}"
                                                      alt="{{ $category->title }}">
                                             </span>--}}
                                             <span class="menu-title">

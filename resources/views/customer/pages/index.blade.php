@@ -13,7 +13,7 @@
                         @foreach($home_slider_banners as $banner)
                             <div class="carousel-item {{ $loop->first?'active':null }}">
                                 <img class="d-block w-100 img-fluid"
-                                     src="{{ assetUrl($banner->banner_image) }}" alt="{{ $banner->banner_name }}">
+                                     src="{{ asset($banner->banner_image) }}" alt="{{ $banner->banner_name }}">
                                 <div class="carousel-caption d-md-block">
                                     <h1>{{ $banner->sub_title }}</h1>
                                     <h2>{{ $banner->banner_name }}</h2>
@@ -91,7 +91,7 @@
                                            data-item-id="{{ $product->variants[0]->varient_id }}">
                                             Add
                                             <div class="home-add-btn">
-                                                <img src="{{ assetUrl('theme/images/plus-white.png') }}">
+                                                <img src="{{ asset('theme/images/plus-white.png') }}">
                                             </div>
                                         </a>
                                     </div>
@@ -124,7 +124,7 @@
             <div class="row mt-5">
                 @foreach($snack_store_banner as $banner)
                     <div class="col-md-6">
-                        <div class="left-bg" style="background-image: url({{ assetUrl($banner->banner_image) }});">
+                        <div class="left-bg" style="background-image: url({{ asset($banner->banner_image) }});">
                             <h5>{{ $banner->banner_name }}</h5>
                             @if(!is_null($banner->button_route))
                                 <a class="see-all-btn" href="{{ route($banner->button_route) }}">
@@ -171,7 +171,7 @@
                                                     </div>
                                                 @endif
                                                 {{--<div class="like-content"><img
-                                                        src="{{ assetUrl('theme/images/heart.png') }}">
+                                                        src="{{ asset('theme/images/heart.png') }}">
                                                 </div>--}}
                                             </div>
                                             <div class="product-description border-0">
@@ -225,7 +225,7 @@
                                          Off
                                      </div>
                                      --}}{{--<div class="like-content"><img
-                                             src="{{ assetUrl('theme/images/heart.png') }}">
+                                             src="{{ asset('theme/images/heart.png') }}">
                                      </div>--}}{{--
                                  </div>
                                  <div class="product-description border-0">
@@ -243,18 +243,18 @@
                                                 value="{{ $product->variants[0]->varient_id }}">
                                          <div class="left-content">
                                              <a class="minus-btn btn">
-                                                 <img src="{{ assetUrl('theme/images/minus.png') }}">
+                                                 <img src="{{ asset('theme/images/minus.png') }}">
                                              </a>
                                              <input type="hidden" name="quantity" value="1">
                                              <span class="quantity">1</span>
                                              <a class="plus-btn btn">
                                                  <img
-                                                     src="{{ assetUrl('theme/images/plus-white.png') }}">
+                                                     src="{{ asset('theme/images/plus-white.png') }}">
                                              </a>
                                          </div>
                                          <div class="right-content">
                                              <a class="btn shopping-cart-btn">
-                                                 <img src="{{ assetUrl('theme/images/shopping-cart.svg') }}">
+                                                 <img src="{{ asset('theme/images/shopping-cart.svg') }}">
                                              </a>
                                          </div>
                                      </div>
@@ -582,9 +582,9 @@
                 </div>
                 <div class="col-md-5">
                     <div class="single-histry-one">
-                        {{--<img src="{{ assetUrl('theme/images/about/bg-back.jpg') }}" alt="Store">
+                        {{--<img src="{{ asset('theme/images/about/bg-back.jpg') }}" alt="Store">
                         <div class="store-img-two">
-                            <img src="{{ assetUrl('theme/images/about/bg-front.jpg') }}" alt="Store">
+                            <img src="{{ asset('theme/images/about/bg-front.jpg') }}" alt="Store">
                         </div>--}}
                     </div>
                 </div>
@@ -610,35 +610,35 @@
                     <div class="brand-store-products-all">
                         <div class="brand-store-product-single">
                             <div class="brand-store-single-img">
-                                <img src="{{ assetUrl('theme/images/brand-store/1.jpg') }}">
+                                <img src="{{ asset('theme/images/brand-store/1.jpg') }}">
                             </div>
                         </div>
 
                         <!-- second -->
                         <div class="brand-store-product-single">
                             <div class="brand-store-single-img">
-                                <img src="{{ assetUrl('theme/images/brand-store/2.jpg') }}">
+                                <img src="{{ asset('theme/images/brand-store/2.jpg') }}">
                             </div>
                         </div>
 
                         <!-- third -->
                         <div class="brand-store-product-single">
                             <div class="brand-store-single-img">
-                                <img src="{{ assetUrl('theme/images/brand-store/3.jpg') }}">
+                                <img src="{{ asset('theme/images/brand-store/3.jpg') }}">
                             </div>
                         </div>
 
                         <!-- four -->
                         <div class="brand-store-product-single">
                             <div class="brand-store-single-img">
-                                <img src="{{ assetUrl('theme/images/brand-store/4.jpg') }}">
+                                <img src="{{ asset('theme/images/brand-store/4.jpg') }}">
                             </div>
                         </div>
 
                         <!-- five -->
                         <div class="brand-store-product-single">
                             <div class="brand-store-single-img">
-                                <img src="{{ assetUrl('theme/images/brand-store/5.jpg') }}">
+                                <img src="{{ asset('theme/images/brand-store/5.jpg') }}">
                             </div>
                         </div>
                     </div>

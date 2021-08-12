@@ -31,7 +31,7 @@ Route::get('unsubscribe-email/{email_id}', 'Customer/CustomerController@unsubscr
 
 // Route::get('/', 'HomeController@index')->name('customer.index');
 Route::get('/', function () {
-    return view('customer.pages.coming-soon');
+    return view('web.index');
 })->name('customer.index');
 
 /**

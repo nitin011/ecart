@@ -2,11 +2,11 @@
 <div class="mobile-header">
     <nav class="navbar navbar-expand-lg navbar-light mobile">
         <a href="{{ url('/') }}">
-            <img src="{{ assetUrl('theme/images/logo.png') }}" height="90px" class="logo-image">
+            <img src="{{ asset('theme/images/logo.png') }}" height="90px" class="logo-image">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="float:right">
-            <img src="{{ assetUrl('theme/images/icons/menu-black.png') }}" height="20px">
+            <img src="{{ asset('theme/images/icons/menu-black.png') }}" height="20px">
         </button>
         <div class="collapse navbar-collapse menu-item" id="navbarNav">
             <ul class="navbar-nav">
@@ -41,7 +41,7 @@
                     <ul class="navbar-nav right-nav">
                         <li class="nav-item search-sec dropdown custom-dropdown">
                             <a class="nav-link dropdown-toggle btn" id="navbarDropSearch" data-toggle="dropdown">
-                                <img src="{{ assetUrl('theme/images/search.svg') }}">
+                                <img src="{{ asset('theme/images/search.svg') }}">
                             </a>
                             <div class="dropdown-menu custom-dropdown-menu sub-dropdown pt-0">
                                 <div>
@@ -61,7 +61,7 @@
                         <li class="nav-item shopping-cart-sec dropdown custom-dropdown">
                             <a class="nav-link dropdown-toggle mr-2" href="#" id="navbarDropCart"
                                data-toggle="dropdown">
-                                <img src="{{ assetUrl('theme/images/cart.png') }}">
+                                <img src="{{ asset('theme/images/cart.png') }}">
                                 <div class="badge badge-success position-absolute cart-count"
                                      style="    margin: -8px auto auto -8px;">
                                     {{ \Cart::getContent()->count() }}
@@ -74,7 +74,7 @@
                         <li class="nav-item profile-sec dropdown custom-dropdown">
                             <a class="nav-link dropdown-toggle" href="{{ route('customer.profile.show') }}"
                                id="navbardrop" data-toggle="dropdown">
-                                <img src="{{ assetUrl('theme/images/profile.png') }}">
+                                <img src="{{ asset('theme/images/profile.png') }}">
                             </a>
                             <div class="dropdown-menu custom-dropdown-menu sub-dropdown pt-0">
                                 <div>
@@ -93,7 +93,7 @@
                                            href="{{ route('customer.profile.show') }}">
                                             <div class="media align-items-center">
                                                 <div class="rounded iq-card-icon iq-bg-primary">
-                                                    <img src="{{ assetUrl('theme/images/icons/user.svg') }}"
+                                                    <img src="{{ asset('theme/images/icons/user.svg') }}"
                                                          height="50px">
                                                 </div>
                                                 <div class="media-body ml-3">
@@ -105,7 +105,7 @@
                                            href="{{ route('customer.order.index') }}">
                                             <div class="media align-items-center">
                                                 <div class="rounded iq-card-icon iq-bg-primary">
-                                                    <img src="{{ assetUrl('theme/images/icons/settings.svg') }}"
+                                                    <img src="{{ asset('theme/images/icons/settings.svg') }}"
                                                          height="50px">
                                                 </div>
                                                 <div class="media-body ml-3">
@@ -119,7 +119,7 @@
                                                      document.getElementById('logout-form').submit();">
                                             <div class="media align-items-center">
                                                 <div class="rounded iq-card-icon iq-bg-primary">
-                                                    <img src="{{ assetUrl('theme/images/icons/logout.svg') }}"
+                                                    <img src="{{ asset('theme/images/icons/logout.svg') }}"
                                                          height="50px">
                                                 </div>
                                                 <div class="media-body ml-3">
