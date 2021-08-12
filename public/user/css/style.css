@@ -56532,7 +56532,7 @@ body:not(.page-index) #header.header-section .header-bottom .verticalmenu-main .
     border-top: none;
 }
 
-#header.header-section .header-bottom .verticalmenu-main .verticalmenu>ul>li:last-child {
+#header.header-section .header-bottom .verticalmenu-main .verticalmenu>ul>li:last-child.more {
     min-height: 84px;
     line-height: 84px
 }

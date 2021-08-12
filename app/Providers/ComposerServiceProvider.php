@@ -28,6 +28,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         view()->composer(['*'], GlobalViewComposer::class);
         view()->composer(['customer.*'], NavbarViewComposer::class);
+        view()->composer(['web.*'], NavbarViewComposer::class);
         view()->composer(['admin.*'], AdminViewComposer::class);
     }
 }

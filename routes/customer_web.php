@@ -29,10 +29,10 @@ Route::get('register-confirm-email/{token}', 'Auth\RegisterController@validateCu
 
 Route::get('unsubscribe-email/{email_id}', 'Customer/CustomerController@unsubscribeEmail')->name('customer.unsubscribe-email');
 
-// Route::get('/', 'HomeController@index')->name('customer.index');
-Route::get('/', function () {
-    return view('web.index');
-})->name('customer.index');
+ Route::get('/', 'HomeController@index')->name('customer.index');
+/*Route::get('/', function () {
+    return view('web.pages.index');
+})->name('customer.index');*/
 
 /**
  * Products Routes

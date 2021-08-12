@@ -45,7 +45,7 @@ class HomeController extends Controller
         $cleaning_household = $this->productRepository->getNProductsByCategorySlug('Cleaning-and-Household', 5);
         $beauty_and_hygiene = $this->productRepository->getNProductsByCategorySlug('Beauty-and-Hygiene', 4);
         $home_kitchen = $this->productRepository->getNProductsByCategorySlug('Home-and-kitchen', 5);
-        return view('customer.pages.index', compact('home_slider_banners',
+        return view('web.pages.index', compact('home_slider_banners',
             'trending_products', 'snack_store_banner', 'fruits_and_vegetables',
             'daily_staples', 'drinks_beverages', 'cleaning_household', 'beauty_and_hygiene', 'home_kitchen'));
     }
