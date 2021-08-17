@@ -24,21 +24,27 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $products = $this->productRepository->getAll(5);
+        $products = $this->productRepository->getAll(8);
         if ($request->ajax()) {
             if (!$products->isEmpty()) {
-                $view = view('customer.pages.product.partials.products_block', compact('products'))->render();
+                $view = view('web.pages.product.partial.product_block', compact('products'))->render();
             }
             return response()->json(['status' => (!$products->isEmpty()), 'html' => $view ?? null]);
         }
-        return view('customer.pages.product.shop', compact('products'));
+        return view('web.pages.product.product-list', compact('products'));
     }
 
     public function bySearch(Request $request)
     {
         $search = $request->search;
-        $products = $this->productRepository->getProductsBySearchAll($search, 50);
-        return view('customer.pages.product.by_search', compact('products', 'search'));
+        $products = $this->productRepository->getProductsBySearchAll($search, 8);
+        if (request()->ajax()) {
+            if (!$products->isEmpty()) {
+                $view = view('web.pages.product.partial.product_block', compact('products'))->render();
+            }
+            return response()->json(['status' => (!$products->isEmpty()), 'html' => $view ?? null]);
+        }
+        return view('web.pages.product.by_search', compact('products', 'search'));
     }
 
 
@@ -46,8 +52,14 @@ class ProductController extends Controller
     {
         $categories = $this->categoryRepository->getAll();
         $current_category = $this->categoryRepository->getById($category_id);
-        $products = $this->productRepository->getByCategoryId($category_id, 30);
-        return view('customer.pages.product.by_category', compact('categories', 'current_category', 'products'));
+        $products = $this->productRepository->getByCategoryId($category_id, 8);
+        if (request()->ajax()) {
+            if (!$products->isEmpty()) {
+                $view = view('web.pages.product.partial.product_block', compact('products'))->render();
+            }
+            return response()->json(['status' => (!$products->isEmpty()), 'html' => $view ?? null]);
+        }
+        return view('web.pages.product.by_category', compact('categories', 'current_category', 'products'));
     }
 
     public function bySlug($slug)
@@ -66,7 +78,7 @@ class ProductController extends Controller
     {
         $variant = $this->productVariantRepository->getById($id);
         $featured_products = $this->productRepository->getRandomCategoryProducts($variant->product->category_id, 12);
-        return view('customer.pages.product.show', compact('variant', 'featured_products'));
+        return view('web.pages.product.product-details', compact('variant', 'featured_products'));
     }
 
     public function pluckTitleByCategoryId(Request $request)

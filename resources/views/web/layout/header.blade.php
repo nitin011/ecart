@@ -266,7 +266,7 @@
                                                         </svg>
 
                                                     </div>
-                                                    <div class="cart-products-count">0</div>
+                                                    <div class="cart-products-count">{{ \Cart::getContent()->count() }}</div>
                                                 </div>
                                                 <div class="cart-right d-flex flex-column align-self-end ml-13">
                                                     <span class="title-cart">Cart</span>
@@ -275,8 +275,11 @@
                                             </div>
                                             <div class="cart_block ">
                                                 <div class="cart-block-content">
-                                                    <div class="no-items">
-                                                        No products in the cart
+                                                    <div class="no-items text-center" style="width: 100%">
+                                                            No products in the cart
+                                                        <hr style="margin: 10px 0">
+                                                        <a class="btn btn-primary" href="{{ route('customer.cart.index') }}" style="padding: 10px 15px">View All</a>
+                                                        <a class="btn btn-primary" href="{{ route('customer.checkout.proceed') }}" style="padding: 10px 15px">Checkout</a>
                                                     </div>
                                                 </div>
                                             </div>

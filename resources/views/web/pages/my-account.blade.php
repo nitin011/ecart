@@ -1,5 +1,5 @@
 @extends('web.layout.app')
-
+@section('page','index')
 @section('content')
     <!-- wrapper start -->
     <div id="wrapper-site">

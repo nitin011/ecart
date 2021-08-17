@@ -1,5 +1,6 @@
 @extends('web.layout.app')
 @section('title','Home')
+@section('page','index')
 @section('content')
     <!-- banner section start -->
     <div id="displayTop" class="displaytoptwo">
@@ -101,380 +102,115 @@
                     <div class="container">
                         <div class="row">
                             <div class="nov-row page-home-left col-lg-cus-2 col-lg-3 col-xs-12">
+
                                 <div class="nov-row-wrap row">
+                                    @if(!$cleaning_household->isEmpty())
+                                        @php
+                                            $households=[];
+                                            foreach($cleaning_household as $cleaning){
+                                                foreach ($cleaning->variants as $variant){
+                                                    $households[]= $variant;
+                                                }
+                                            }
+                                        @endphp
                                     <div class="nov-productlist productlist-liststyle-3 col-xl-12 col-lg-12 col-md-12 col-xs-12 ">
                                         <div class="block block-product clearfix">
                                             <h2 class="title_block">
-                                                BEST SELLERS
+                                                Cleaning <br>& Household
                                             </h2>
                                             <div class="block_content">
                                                 <div id="productlist106970551" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false" data-autoplaytimeout="6000" data-loop="false" data-margin="0" data-dots="false" data-nav="true" data-items="1" data-items_large="1" data-items_tablet="2"
                                                      data-items_mobile="1">
                                                     <div class="item  text-center">
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  first_item" data-id-product="1" data-id-product-attribute="1" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/1-1.jpg" alt="" data-full-size-image-url="images/Home/common/1-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/1-2.jpg" alt="" data-full-size-image-url="images/Home/common/1-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Nullam
-                                                                                sed sollicitudin mauris</a>
-                                                                        </div>
+                                                        @php
+                                                            $count=0
+                                                        @endphp
+                                                    @foreach($households as $household)
 
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$25.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
+                                                            <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  {{ $count ==0?'first_item': ($count==3?'last_item':'') }}" data-id-product="{{$household->varient_id}}" data-id-product-attribute="{{$household->product_id}}" itemscope>
+                                                                <div class="col-12 col-w37 no-padding">
+                                                                    <div class="thumbnail-container">
+                                                                        <a href="{{ route('customer.product.show',$household->varient_id) }}" class="thumbnail product-thumbnail two-image">
+                                                                            <img class="img-fluid image-cover" src="{{$household->varient_image_url}}" alt="" data-full-size-image-url="{{$household->varient_image_url}}" width="270" height="360">
+                                                                            <img class="img-fluid image-secondary" src="{{$household->product_image_url}}" alt="" data-full-size-image-url="{{$household->product_image_url}}" width="270" height="360">
+                                                                        </a>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature " data-id-product="2" data-id-product-attribute="9" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/2-1.jpg" alt="" data-full-size-image-url="images/Home/common/2-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/2-2.jpg" alt="" data-full-size-image-url="images/Home/common/2-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
+                                                                <div class="col-12 col-w63 no-padding">
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups hidden-rate">
+                                                                            <div class="product-comments">
+                                                                                <div class="star_content">
+                                                                                    <div class="star"></div>
+                                                                                    <div class="star"></div>
+                                                                                    <div class="star"></div>
+                                                                                    <div class="star"></div>
+                                                                                    <div class="star"></div>
+                                                                                </div>
+                                                                                <span>0 review</span>
                                                                             </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Lorem
-                                                                                ipsum dolor sit amet
-                                                                            </a>
-                                                                        </div>
+                                                                            <p class="seller_name">
+                                                                                <a title="View seller profile" href="#">
+                                                                                    <i class="fa fa-user"></i> David James
+                                                                                </a>
+                                                                            </p>
+                                                                            <div class="product-title" itemprop="name">
+                                                                                <a href="{{ route('customer.product.show',$household->varient_id) }}" title="{{$household->product->product_name}}">{{ \Illuminate\Support\Str::limit($household->product->product_name,30) }}</a>
+                                                                            </div>
 
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$43.20
-                                                                                    </span>
-                                                                                <span class="regular-price">$48.00
-                                                                                    </span>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span itemprop="price" class="price">{{ $currency->currency_sign }} {{ $household->price }}</span>
+                                                                                    <span class="regular-price">{{ $currency->currency_sign }} {{ $household->mrp }}</span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature " data-id-product="3" data-id-product-attribute="40" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/3-1.jpg" alt="" data-full-size-image-url="images/Home/common/3-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/3-2.jpg" alt="" data-full-size-image-url="images/Home/common/3-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Mauris
-                                                                                molestie porttitor diam</a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$69.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  last_item" data-id-product="4" data-id-product-attribute="52" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/1-1.jpg" alt="" data-full-size-image-url="images/Home/common/1-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/1-2.jpg" alt="" data-full-size-image-url="images/Home/common/1-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Maecenas
-                                                                                vulputate ligula vel
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$49.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                            @php $count++ @endphp
+                                                        @if($loop->iteration % 4 ==0)
+                                                                @php $count = 0 @endphp
                                                     </div>
-                                                    <div class="item  text-center">
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  first_item" data-id-product="5" data-id-product-attribute="64" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/2-1.jpg" alt="" data-full-size-image-url="images/Home/common/2-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/2-2.jpg" alt="" data-full-size-image-url="images/Home/common/2-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Vehicula
-                                                                                vel tempus sit amet ulte
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$15.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature " data-id-product="6" data-id-product-attribute="76" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/3-1.jpg" alt="" data-full-size-image-url="images/Home/common/3-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/3-2.jpg" alt="" data-full-size-image-url="images/Home/common/3-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Nullam
-                                                                                tempor orci eu pretium
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$25.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature " data-id-product="7" data-id-product-attribute="88" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/9-1.jpg" alt="" data-full-size-image-url="images/Home/common/9-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/9-2.jpg" alt="" data-full-size-image-url="images/Home/common/9-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Donec
-                                                                                non lectus ac erat sedei
-                                                                            </a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$37.05
-                                                                                    </span>
-                                                                                <span class="regular-price">$39.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  last_item" data-id-product="8" data-id-product-attribute="100" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/4-1.jpg" alt="" data-full-size-image-url="images/Home/common/4-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/4-2.jpg" alt="" data-full-size-image-url="images/Home/common/4-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Curabitur
-                                                                                in lorem sit ameten alt
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$30.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                                <div class="item  text-center">
+                                                        @endif
+                                                    @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
+
+                                        @if(!$beauty_and_hygiene->isEmpty())
+                                            @php
+                                                $beauties=[];
+                                                foreach($beauty_and_hygiene as $beauty){
+                                                    foreach ($beauty->variants as $variant){
+                                                        $beauties[]= $variant;
+                                                    }
+                                                }
+                                            @endphp
 
                                     <div class="nov-productlist     productlist-liststyle-3  col-xl-12 col-lg-12 col-md-12 col-xs-12 ">
                                         <div class="block block-product clearfix">
                                             <h2 class="title_block">
-                                                NEW ARRIVALS
+                                                Beauty and <br>Hygiene
                                             </h2>
                                             <div class="block_content">
                                                 <div id="productlist7894997" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false" data-autoplayTimeout="6000" data-loop="false" data-margin="0" data-dots="false" data-nav="true" data-items="1" data-items_large="1" data-items_tablet="2"
                                                      data-items_mobile="1">
                                                     <div class="item  text-center">
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  first_item" data-id-product="1" data-id-product-attribute="1" itemscope>
+                                                        @php
+                                                            $count=0
+                                                        @endphp
+                                                        @foreach($beauties as $beauty)
+                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature {{ $count ==0?'first_item': ($count==3?'last_item':'') }}" data-id-product="{{$beauty->varient_id}}" data-id-product-attribute="{{$beauty->product_id}}" itemscope>
                                                             <div class="col-12 col-w37 no-padding">
                                                                 <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/1-1.jpg" alt="" data-full-size-image-url="images/Home/common/1-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/1-2.jpg" alt="" data-full-size-image-url="images/Home/common/1-2.jpg" width="270" height="360">
+                                                                    <a href="{{ route('customer.product.show',$beauty->varient_id) }}" class="thumbnail product-thumbnail two-image">
+                                                                        <img class="img-fluid image-cover" src="{{$beauty->varient_image_url}}" alt="" data-full-size-image-url="{{$beauty->varient_image_url}}" width="270" height="360">
+                                                                        <img class="img-fluid image-secondary" src="{{$beauty->product_image_url}}" alt="" data-full-size-image-url="{{$beauty->product_image_url}}" width="270" height="360">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -497,332 +233,36 @@
                                                                             </a>
                                                                         </p>
                                                                         <div class="product-title" itemprop="name">
-                                                                            <a href="#">Nullam
-                                                                                sed sollicitudin mauris
-                                                                            </a>
+                                                                            <a href="{{ route('customer.product.show',$beauty->varient_id) }}" title="{{$beauty->product->product_name}}">{{ \Illuminate\Support\Str::limit($beauty->product->product_name,30) }}</a>
                                                                         </div>
                                                                         <div class="product-group-price">
                                                                             <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$25.00
-                                                                                    </span>
+                                                                                <span itemprop="price" class="price">{{ $currency->currency_sign }} {{ $beauty->price }}</span>
+                                                                                <span class="regular-price">{{ $currency->currency_sign }} {{ $beauty->mrp }}</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature " data-id-product="2" data-id-product-attribute="9" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/2-1.jpg" alt="" data-full-size-image-url="images/Home/common/2-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/2-2.jpg" alt="" data-full-size-image-url="images/Home/common/2-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Lorem
-                                                                                ipsum dolor sit amet
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$43.20
-                                                                                    </span>
-                                                                                <span class="regular-price">$48.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature " data-id-product="3" data-id-product-attribute="40" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/3-1.jpg" alt="" data-full-size-image-url="images/Home/common/3-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/3-2.jpg" alt="" data-full-size-image-url="images/Home/common/3-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Mauris
-                                                                                molestie porttitor diam
-                                                                            </a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$69.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  last_item" data-id-product="4" data-id-product-attribute="52" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/8-1.jpg" alt="" data-full-size-image-url="images/Home/common/8-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/11-1.jpg" alt="" data-full-size-image-url="images/Home/common/11-1.jpg" width="270" height="360">
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Maecenas
-                                                                                vulputate ligula vel
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$49.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                            @php $count++ @endphp
+                                                            @if($loop->iteration % 4 ==0)
+                                                                @php $count = 0 @endphp
                                                     </div>
                                                     <div class="item  text-center">
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  first_item" data-id-product="5" data-id-product-attribute="64" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/13-1.jpg" alt="" data-full-size-image-url="images/Home/common/13-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/12-1.jpg" alt="" data-full-size-image-url="images/Home/common/12-1.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Vehicula
-                                                                                vel tempus sit amet ulte
-                                                                            </a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$15.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature " data-id-product="6" data-id-product-attribute="76" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/15-1.jpg" alt="" data-full-size-image-url="images/Home/common/15-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/16-1.jpg" alt="" data-full-size-image-url="images/Home/common/16-1.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Nullam
-                                                                                tempor orci eu pretium
-                                                                            </a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$25.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature " data-id-product="7" data-id-product-attribute="88" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/9-1.jpg" alt="" data-full-size-image-url="images/Home/common/9-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/9-2.jpg" alt="" data-full-size-image-url="images/Home/common/9-2.jpg" width="270" height="360">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Donec
-                                                                                non lectus ac erat sedei</a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                    <span itemprop="price" class="price">$37.05
-                                                                                    </span>
-                                                                                <span class="regular-price">$39.00
-                                                                                    </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature  last_item" data-id-product="8" data-id-product-attribute="100" itemscope>
-                                                            <div class="col-12 col-w37 no-padding">
-                                                                <div class="thumbnail-container">
-
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/4-1.jpg" alt="" data-full-size-image-url="images/Home/common/4-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/4-2.jpg" alt="" data-full-size-image-url="images/Home/common/4-2.jpg" width="270" height="360">
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w63 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups hidden-rate">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Curabitur
-                                                                                in lorem sit ameten alt</a>
-                                                                        </div>
-                                                                        <div class="product-group-price">
-                                                                            <div class="product-price-and-shipping">
-                                                                                <span itemprop="price" class="price">$30.00</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        @endif
+                                                        @endforeach
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-
+                                        @endif
 
                                 </div>
+
                             </div>
                             <div class="nov-row page-home-right col-lg-cus-10 col-lg-9 col-xs-12">
                                 <div class="nov-row-wrap row">
@@ -1064,23 +504,33 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                        @if(!$home_kitchen->isEmpty())
+                                    @php
+                                        $kitchens=[];
+                                        foreach($home_kitchen as $product){
+                                            foreach($product->variants as $variant){
+                                                        $kitchens[]=$variant;
+                                            }
+                                        }
+                                        $count=0;
+                                    @endphp
                                     <div class="nov-productlist productlist-liststyle-3 col-xl-4 col-lg-4 col-md-4 col-xs-12 col-lg-12 col-md-12">
                                         <div class="block block-product clearfix">
                                             <h2 class="title_block">
-                                                ON SALE
+                                                Home & Kitchen
                                             </h2>
                                             <div class="block_content">
                                                 <div id="productlist228809710" class="product_list grid owl-carousel owl-theme multi-row" data-autoplay="false" data-autoplaytimeout="6000" data-loop="false" data-margin="20" data-dots="false" data-nav="true" data-items="1" data-items_large="2" data-items_tablet="2"
                                                      data-items_mobile="2">
                                                     <div class="item  text-center">
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature item-three js-product-miniature  first_item" data-id-product="1" data-id-product-attribute="1" itemscope>
+                                                        @foreach($kitchens as $kitchen)
+                                                        <div class="d-flex flex-wrap align-items-start product-miniature item-three js-product-miniature  {{ $count ==0?'first_item': ($count==2?'last_item':'') }}" data-id-product="{{$kitchen->varient_id}}" data-id-product-attribute="{{$kitchen->product_id}}" itemscope>
                                                             <div class="col-12 col-w27 no-padding">
                                                                 <div class="thumbnail-container">
 
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/1-1.jpg" alt="" data-full-size-image-url="images/Home/common/1-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/1-2.jpg" alt="" data-full-size-image-url="images/Home/common/1-2.jpg" width="270" height="360">
+                                                                    <a href="{{ route('customer.product.show',$kitchen->varient_id) }}" class="thumbnail product-thumbnail two-image">
+                                                                        <img class="img-fluid image-cover" src="{{$kitchen->varient_image_url}}" alt="" data-full-size-image-url="{{$kitchen->varient_image_url}}" width="270" height="360">
+                                                                        <img class="img-fluid image-secondary" src="{{$kitchen->product_image_url}}" alt="" data-full-size-image-url="{{$kitchen->product_image_url}}" width="270" height="360">
                                                                     </a>
 
                                                                 </div>
@@ -1108,324 +558,33 @@
 
 
                                                                         <div class="product-title" itemprop="name">
-                                                                            <a href="#">Nullam
-                                                                                sed sollicitudin mauris</a>
+                                                                            <a href="{{ route('customer.product.show',$kitchen->varient_id) }}" title="{{$kitchen->product->product_name}}">{{ \Illuminate\Support\Str::limit($kitchen->product->product_name,30) }}</a>
                                                                         </div>
 
                                                                         <div class="product-group-price">
-
                                                                             <div class="product-price-and-shipping">
-
-
-
-                                                                                <span itemprop="price" class="price">$25.00</span>
-
-
-
-
-
+                                                                                <span itemprop="price" class="price">{{ $currency->currency_sign }} {{ $kitchen->price }}</span>
+                                                                                <span class="regular-price">{{ $currency->currency_sign }} {{ $kitchen->mrp }}</span>
                                                                             </div>
-
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature item-three js-product-miniature " data-id-product="2" data-id-product-attribute="9" itemscope>
-                                                            <div class="col-12 col-w27 no-padding">
-                                                                <div class="thumbnail-container">
-
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/2-1.jpg" alt="" data-full-size-image-url="images/Home/common/2-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/2-2.jpg" alt="" data-full-size-image-url="images/Home/common/2-2.jpg" width="270" height="360">
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w73 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-
-
-
-
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Lorem
-                                                                                ipsum dolor sit amet</a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-
-                                                                            <div class="product-price-and-shipping">
-
-
-
-                                                                                <span itemprop="price" class="price">$43.20</span>
-
-
-
-                                                                                <span class="regular-price">$48.00</span>
-
-
-
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature item-three js-product-miniature  last_item" data-id-product="3" data-id-product-attribute="40" itemscope>
-                                                            <div class="col-12 col-w27 no-padding">
-                                                                <div class="thumbnail-container">
-
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/3-1.jpg" alt="" data-full-size-image-url="images/Home/common/3-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/3-2.jpg" alt="" data-full-size-image-url="images/Home/common/3-2.jpg" width="270" height="360">
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w73 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-
-
-
-
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Mauris
-                                                                                molestie porttitor diam</a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-
-                                                                            <div class="product-price-and-shipping">
-
-
-
-                                                                                <span itemprop="price" class="price">$69.00</span>
-
-
-
-
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                            @php $count++ @endphp
+                                                            @if($loop->iteration % 3 ==0)
+                                                                @php $count = 0 @endphp
                                                     </div>
                                                     <div class="item  text-center">
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature item-three js-product-miniature  first_item" data-id-product="4" data-id-product-attribute="52" itemscope>
-                                                            <div class="col-12 col-w27 no-padding">
-                                                                <div class="thumbnail-container">
-
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/4-1.jpg" alt="" data-full-size-image-url="images/Home/common/4-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/4-2.jpg" alt="" data-full-size-image-url="images/Home/common/4-2.jpg" width="270" height="360">
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w73 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-
-
-
-
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Maecenas
-                                                                                vulputate ligula vel</a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-
-                                                                            <div class="product-price-and-shipping">
-
-
-
-                                                                                <span itemprop="price" class="price">$49.00</span>
-
-
-
-
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature item-three js-product-miniature " data-id-product="5" data-id-product-attribute="64" itemscope>
-                                                            <div class="col-12 col-w27 no-padding">
-                                                                <div class="thumbnail-container">
-
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/8-1.jpg" alt="" data-full-size-image-url="images/Home/common/8-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/8-2.jpg" alt="" data-full-size-image-url="images/Home/common/8-2.jpg" width="270" height="360">
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w73 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-
-
-
-
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Vehicula
-                                                                                vel tempus sit amet ulte</a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-
-                                                                            <div class="product-price-and-shipping">
-
-
-
-                                                                                <span itemprop="price" class="price">$15.00</span>
-
-
-
-
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-wrap align-items-start product-miniature item-three js-product-miniature  last_item" data-id-product="6" data-id-product-attribute="76" itemscope>
-                                                            <div class="col-12 col-w27 no-padding">
-                                                                <div class="thumbnail-container">
-
-                                                                    <a href="#" class="thumbnail product-thumbnail two-image">
-                                                                        <img class="img-fluid image-cover" src="images/Home/common/9-1.jpg" alt="" data-full-size-image-url="images/Home/common/9-1.jpg" width="270" height="360">
-                                                                        <img class="img-fluid image-secondary" src="images/Home/common/9-2.jpg" alt="" data-full-size-image-url="images/Home/common/9-2.jpg" width="270" height="360">
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-w73 no-padding">
-                                                                <div class="product-description">
-                                                                    <div class="product-groups">
-                                                                        <div class="product-comments">
-                                                                            <div class="star_content">
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                                <div class="star"></div>
-                                                                            </div>
-                                                                            <span>0 review</span>
-                                                                        </div>
-                                                                        <p class="seller_name">
-                                                                            <a title="View seller profile" href="#">
-                                                                                <i class="fa fa-user"></i> David James
-                                                                            </a>
-                                                                        </p>
-
-
-
-
-                                                                        <div class="product-title" itemprop="name">
-                                                                            <a href="#">Nullam
-                                                                                tempor orci eu pretium</a>
-                                                                        </div>
-
-                                                                        <div class="product-group-price">
-
-                                                                            <div class="product-price-and-shipping">
-
-
-
-                                                                                <span itemprop="price" class="price">$25.00</span>
-
-
-
-
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        @endif
+                                                        @endforeach
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                        @endif
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         <div class="block block-producttab producttab-rows    groupproduct-right" id="groupproducttab937980878">
                                             <div class="block-tab-title d-flex align-items-center justify-content-between">
@@ -1493,7 +652,7 @@
                                                                                     </p>
 
 
-                                                                                    <div class="product-title" itemprop="name"><a href="{{ route('customer.product.show',$variant->varient_id) }}">{{ \Illuminate\Support\Str::limit($variant->product->product_name,30) }}</a></div>
+                                                                                    <div class="product-title" itemprop="name"><a href="{{ route('customer.product.show',$variant->varient_id) }}" title="{{$variant->product->product_name}}">{{ \Illuminate\Support\Str::limit($variant->product->product_name,30) }}</a></div>
 
                                                                                     <div class="product-group-price">
 
@@ -1540,15 +699,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="nov-image col-lg-12 col-md-12 effect-special">
-                                        <div class="block">
-                                            <div class="block_content">
-                                                <div class="effect">
-                                                    <a href="#"> <img class="img-fluid" src="images/Home/banner/banner-4.jpg" alt="banner2-5" title="banner2-5"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                         @if(!$fruits_and_vegetables->isEmpty())
                                     <div class=" col-xl-12 col-lg-12 col-md-12 col-xs-12">
                                         <div class="groupproductlist">
@@ -1578,7 +729,7 @@
                                                                                 <div class="category-title"><a href="{{ route('customer.products.by-category',$fruit->product->cat_id) }}">{{ $fruit->product->category->title }}</a></div>
 
 
-                                                                                <div class="product-title" itemprop="name"><a href="{{ route('customer.product.show',$fruit->varient_id) }}">{{ $fruit->product->product_name }}</a>
+                                                                                <div class="product-title" itemprop="name"><a href="{{ route('customer.product.show',$fruit->varient_id) }}" title="{{$fruit->product->product_name}}">{{ \Illuminate\Support\Str::limit($fruit->product->product_name,30) }}</a>
                                                                                 </div>
 
                                                                             </div>
@@ -1647,6 +798,19 @@
                                         </div>
                                     </div>
                                         @endif
+
+                                        @foreach($drinks_beverages as $drink)
+                                            <div class="nov-image col-lg-4 col-md-4 special-banner-1 mb-xs-15">
+                                                <div class="block">
+                                                    <div class="block_content">
+                                                        <div class="effect">
+                                                            <a href="{{ !is_null($banner->button_route)?$drink->button_route:'javascript:void(0)'}}"> <img class="img-fluid" src="{{ $drink->banner_image }}" alt="{{ $banner->banner_name }}" title="{{ $banner->banner_name }}"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
                                         @if(!$daily_staples->isEmpty())
                                             <div class=" col-xl-12 col-lg-12 col-md-12 col-xs-12">
                                                 <div class="groupproductlist">
@@ -1674,7 +838,7 @@
                                                                                         <div class="product-cat-content">
 
                                                                                             <div class="category-title"><a href="{{ route('customer.products.by-category',$variant->product->cat_id) }}">{{ $variant->product->category->title }}</a></div>
-                                                                                            <div class="product-title" itemprop="name"><a href="{{ route('customer.product.show',$variant->varient_id) }}">{{ $variant->product->product_name }}</a>
+                                                                                            <div class="product-title" itemprop="name"><a href="{{ route('customer.product.show',$variant->varient_id) }}" title="{{$variant->product->product_name}}">{{ \Illuminate\Support\Str::limit($variant->product->product_name,30) }}</a>
                                                                                             </div>
 
                                                                                         </div>

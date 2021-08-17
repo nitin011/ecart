@@ -47,7 +47,7 @@ Route::get('products/{slug}', 'ProductController@bySlug')->name('customer.produc
  * Cart Routes
  */
 Route::get('cart', 'CartController@index')->name('customer.cart.index');
-Route::get('cart/add', 'CartController@insert')->name('customer.cart.add');
+Route::post('cart/add', 'CartController@insert')->name('customer.cart.add');
 Route::post('cart/update', 'CartController@update')->name('customer.cart.update');
 Route::get('cart/delete/{id}', 'CartController@delete')->name('customer.cart.delete');
 Route::get('cart/delete', 'CartController@deleteItemAjax')->name('customer.cart.ajax-delete');

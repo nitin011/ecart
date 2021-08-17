@@ -322,7 +322,7 @@
 
 <!-- body content start -->
 
-<body id="index" class="lang-en country-us currency-usd layout-full-width page-index tax-display-disabled">
+<body id="@yield('page')" class="lang-en country-us currency-usd layout-full-width page-index tax-display-disabled">
 
 <!-- wrapper content start -->
 <section id="main-site" class="displayhome">

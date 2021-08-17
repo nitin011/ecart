@@ -7,7 +7,7 @@ use App\Models\City;
 
 class CityService
 {
-    protected City $model;
+    protected $model;
 
     public function __construct(City $model)
     {
