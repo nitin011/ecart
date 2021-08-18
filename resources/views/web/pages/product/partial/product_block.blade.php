@@ -55,7 +55,7 @@
                         @csrf
                         <input type="hidden" name="variant_id" value="{{ $product->variants[0]->varient_id }}">
                         <input type="hidden" name="quantity" value="1">
-                        <a class="add-to-cart" href="javascript:void(0)" data-button-action="add-to-cart"><i
+                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
                                 class="novicon-cart"></i><span>Add to cart</span></a>
                     </form>
                     <a class="addToWishlist wishlistProd_1" href="javascript:void(0)" data-rel="1" onclick="">

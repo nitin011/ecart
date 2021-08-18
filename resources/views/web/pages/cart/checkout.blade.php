@@ -1,4 +1,5 @@
 @extends('web.layout.app')
+@section('title','Checkout')
 @section('page','index')
 @section('content')
     <!-- wrapper start -->
@@ -30,7 +31,7 @@
 
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <div class="bg-white">
                                         <div class="arrordian-section">
                                             <div class="accordion" id="accordionExample">
@@ -138,243 +139,12 @@
                                                     <hr>
                                                 </div>
 
-                                                <!-- third card -->
-                                                <div class="card">
-                                                    <div class="card-head" id="headingThree">
-                                                        <div class="container">
-                                                            <h2 class="mb-0 iocn-arroridan collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                                <div class="number-content">3</div>
-                                                                <div class="title-accordian"> Order Summary</div>
-                                                            </h2>
-                                                        </div>
-                                                    </div>
-                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                                        <div class="card-body pt-0">
-                                                            <div class="form-group">
-
-
-
-
-                                                                <div class="row">
-                                                                    <div class="col-12 mt-30">
-                                                                        <div class="table-responsive shop_cart_table">
-                                                                            <table class="table">
-                                                                                <thead>
-                                                                                <tr>
-                                                                                    <th class="product-thumbnail">&nbsp;
-                                                                                    </th>
-                                                                                    <th class="product-name">Product</th>
-                                                                                    <th class="product-price">Price</th>
-                                                                                    <th class="product-qty">Quantity</th>
-                                                                                    <th class="product-subtotal">Total</th>
-                                                                                    <th class="product-remove">Remove</th>
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                <tr>
-                                                                                    <td class="product-thumbnail">
-                                                                                        <a href="#"><img src="images/Home/common/1-1.jpg" alt="product1"></a>
-                                                                                    </td>
-                                                                                    <td class="product-name" data-title="Product"><a href="#">Watch For Woman</a>
-                                                                                    </td>
-                                                                                    <td class="product-price" data-title="Price">$45.00
-                                                                                    </td>
-                                                                                    <td class="product-quantity" data-title="Quantity">
-                                                                                        <div class="quantity">
-                                                                                            <input type="button" value="-" class="minus">
-                                                                                            <input type="text" name="quantity" value="2" title="Qty" class="qty" size="4">
-                                                                                            <input type="button" value="+" class="plus">
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td class="product-subtotal" data-title="Total">
-                                                                                        $90.00</td>
-                                                                                    <td class="product-remove" data-title="Remove">
-                                                                                        <a href="#">
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="close" width="10px" height="10px" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
-                                                                                                        <g>
-                                                                                                            <g>
-                                                                                                                <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717    L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859    c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287    l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285    L284.286,256.002z"></path>
-                                                                                                            </g>
-                                                                                                        </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                    </svg>
-                                                                                        </a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="product-thumbnail">
-                                                                                        <a href="#"><img src="images/Home/common/1-2.jpg" alt="product2"></a>
-                                                                                    </td>
-                                                                                    <td class="product-name" data-title="Product"><a href="#">Watch for women</a>
-                                                                                    </td>
-                                                                                    <td class="product-price" data-title="Price">$55.00
-                                                                                    </td>
-                                                                                    <td class="product-quantity" data-title="Quantity">
-                                                                                        <div class="quantity">
-                                                                                            <input type="button" value="-" class="minus">
-                                                                                            <input type="text" name="quantity" value="1" title="Qty" class="qty" size="4">
-                                                                                            <input type="button" value="+" class="plus">
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td class="product-subtotal" data-title="Total">
-                                                                                        $55.00</td>
-                                                                                    <td class="product-remove" data-title="Remove">
-                                                                                        <a href="#">
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="close-3" width="10px" height="10px" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
-                                                                                                        <g>
-                                                                                                            <g>
-                                                                                                                <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717    L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859    c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287    l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285    L284.286,256.002z"></path>
-                                                                                                            </g>
-                                                                                                        </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                    </svg>
-                                                                                        </a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="product-thumbnail">
-                                                                                        <a href="#"><img src="images/Home/common/2-1.jpg" alt="product3"></a>
-                                                                                    </td>
-                                                                                    <td class="product-name" data-title="Product"><a href="#">Smartphone</a></td>
-                                                                                    <td class="product-price" data-title="Price">$68.00
-                                                                                    </td>
-                                                                                    <td class="product-quantity" data-title="Quantity">
-                                                                                        <div class="quantity">
-                                                                                            <input type="button" value="-" class="minus">
-                                                                                            <input type="text" name="quantity" value="3" title="Qty" class="qty" size="4">
-                                                                                            <input type="button" value="+" class="plus">
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td class="product-subtotal" data-title="Total">
-                                                                                        $204.00</td>
-                                                                                    <td class="product-remove" data-title="Remove">
-                                                                                        <a href="#">
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="close-2" width="10px" height="10px" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
-                                                                                                        <g>
-                                                                                                            <g>
-                                                                                                                <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717    L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859    c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287    l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285    L284.286,256.002z"></path>
-                                                                                                            </g>
-                                                                                                        </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                <g>
-                                                                                                </g>
-                                                                                                    </svg>
-                                                                                        </a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                </tbody>
-
-                                                                            </table>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                                <div class="mt-20">
-                                                                    <button class="btn btn-primary">Proceed to Payment</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- line -->
-                                                <div>
-                                                    <hr>
-                                                </div>
-
                                                 <!-- forth card -->
                                                 <div class="card">
                                                     <div class="card-head" id="headingFour">
                                                         <div class="container">
                                                             <h2 class="mb-0 iocn-arroridan collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                                <div class="number-content">4</div>
+                                                                <div class="number-content">3</div>
                                                                 <div class="title-accordian">Payment</div>
                                                             </h2>
                                                         </div>
@@ -521,7 +291,218 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mt-30">
+                                <div class="col-md-5 mt-30">
+
+                                    <div class="order-summary-section">
+                                        <div>
+                                            <h2 class="title-checkout">Order Summary</h2>
+                                        </div>
+                                        <div>
+                                            <hr>
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-12 mt-30">
+                                                        <div class="table-responsive shop_cart_table">
+                                                            <table class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th class="product-thumbnail">&nbsp;</th>
+                                                                    <th class="product-name">Product</th>
+                                                                    <th class="product-price">Price</th>
+                                                                    <th class="product-qty">Quantity</th>
+                                                                    <th class="product-subtotal">Total</th>
+                                                                    <th class="product-remove">Remove</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class="product-thumbnail">
+                                                                        <a href="#"><img src="images/Home/common/1-1.jpg" alt="product1"></a>
+                                                                    </td>
+                                                                    <td class="product-name" data-title="Product"><a href="#">Watch For Woman</a>
+                                                                    </td>
+                                                                    <td class="product-price" data-title="Price">$45.00
+                                                                    </td>
+                                                                    <td class="product-quantity" data-title="Quantity">
+                                                                        <div class="quantity">
+                                                                            <input type="button" value="-" class="minus">
+                                                                            <input type="text" name="quantity" value="2" title="Qty" class="qty" size="4">
+                                                                            <input type="button" value="+" class="plus">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="product-subtotal" data-title="Total">
+                                                                        $90.00</td>
+                                                                    <td class="product-remove" data-title="Remove">
+                                                                        <a href="#">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="close" width="10px" height="10px" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
+                                                                                                        <g>
+                                                                                                            <g>
+                                                                                                                <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717    L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859    c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287    l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285    L284.286,256.002z"></path>
+                                                                                                            </g>
+                                                                                                        </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                                    </svg>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="product-thumbnail">
+                                                                        <a href="#"><img src="images/Home/common/1-2.jpg" alt="product2"></a>
+                                                                    </td>
+                                                                    <td class="product-name" data-title="Product"><a href="#">Watch for women</a>
+                                                                    </td>
+                                                                    <td class="product-price" data-title="Price">$55.00
+                                                                    </td>
+                                                                    <td class="product-quantity" data-title="Quantity">
+                                                                        <div class="quantity">
+                                                                            <input type="button" value="-" class="minus">
+                                                                            <input type="text" name="quantity" value="1" title="Qty" class="qty" size="4">
+                                                                            <input type="button" value="+" class="plus">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="product-subtotal" data-title="Total">
+                                                                        $55.00</td>
+                                                                    <td class="product-remove" data-title="Remove">
+                                                                        <a href="#">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="close-3" width="10px" height="10px" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
+                                                                                                        <g>
+                                                                                                            <g>
+                                                                                                                <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717    L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859    c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287    l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285    L284.286,256.002z"></path>
+                                                                                                            </g>
+                                                                                                        </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                                    </svg>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="product-thumbnail">
+                                                                        <a href="#"><img src="images/Home/common/2-1.jpg" alt="product3"></a>
+                                                                    </td>
+                                                                    <td class="product-name" data-title="Product"><a href="#">Smartphone</a></td>
+                                                                    <td class="product-price" data-title="Price">$68.00
+                                                                    </td>
+                                                                    <td class="product-quantity" data-title="Quantity">
+                                                                        <div class="quantity">
+                                                                            <input type="button" value="-" class="minus">
+                                                                            <input type="text" name="quantity" value="3" title="Qty" class="qty" size="4">
+                                                                            <input type="button" value="+" class="plus">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="product-subtotal" data-title="Total">
+                                                                        $204.00</td>
+                                                                    <td class="product-remove" data-title="Remove">
+                                                                        <a href="#">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="close-2" width="10px" height="10px" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
+                                                                                                        <g>
+                                                                                                            <g>
+                                                                                                                <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717    L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859    c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287    l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285    L284.286,256.002z"></path>
+                                                                                                            </g>
+                                                                                                        </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                <g>
+                                                                                </g>
+                                                                                                    </svg>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="bg_gray mb-30 p-5">
                                         <div class="order-summary-section">
                                             <div>

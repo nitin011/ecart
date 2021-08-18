@@ -36,6 +36,7 @@ class CartController extends Controller
                     'status' => true,
                     'message' => 'Item Added in cart.',
                     'data' => [
+                        'cart_items_html' => view('web.pages.cart.cart_product')->render(),
                         'cart_list_popup_html' => view('customer.layouts.globals.cart-list-popup')->render(),
                         'mobile_cart_list_popup_html' => view('customer.layouts.globals.mobile-cart-list-popup')->render(),
                         'cart_count' => \Cart::getContent()->count()
@@ -73,6 +74,7 @@ class CartController extends Controller
             'status' => true,
             'message' => 'Item Removed From cart.',
             'data' => [
+                'cart_items_html' => view('web.pages.cart.cart_product')->render(),
                 'cart_list_popup_html' => view('customer.layouts.globals.cart-list-popup')->render(),
                 'mobile_cart_list_popup_html' => view('customer.layouts.globals.mobile-cart-list-popup')->render(),
                 'cart_count' => \Cart::getContent()->count()

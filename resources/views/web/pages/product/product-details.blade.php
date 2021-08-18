@@ -159,7 +159,7 @@
 
                                                     <div class="product-add-to-cart in_border">
                                                         <div class="add">
-                                                            <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart" type="submit">
+                                                            <button class="btn btn-primary add-to-cart" data-button-action="" type="button">
                                                                 <div
                                                                     class="icon-cart d-flex align-items-center justify-content-center">
                                                                     <svg version="1.1" id="shopping-cart-2"
@@ -373,9 +373,8 @@
                                                         @csrf
                                                         <input type="hidden" name="variant_id" value="{{ $f_product->variants[0]->varient_id }}">
                                                         <input type="hidden" name="quantity" value="1">
-                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action="add-to-cart"><i
-                                                                class="novicon-cart"></i><span>Add
-                                                                                                    to cart</span></a>
+                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
+                                                                class="novicon-cart"></i><span>Add to cart</span></a>
                                                     </form>
                                                     <a class="addToWishlist wishlistProd_1" href="#" data-rel="1" onclick="">
                                                         <i class="fa fa-heart"></i>

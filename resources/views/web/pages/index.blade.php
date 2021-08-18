@@ -377,7 +377,7 @@
                                                                     <form action="" method="post">
                                                                         <input type="hidden" name="token" value="">
                                                                         <input type="hidden" name="id_product" value="2">
-                                                                        <a class="add-to-cart" href="#" data-button-action="add-to-cart"><i
+                                                                        <a class="add-to-cart" href="#" data-button-action=""><i
                                                                                 class="novicon-cart"></i></a>
                                                                     </form>
                                                                     <a class="addToWishlist wishlistProd_2" href="#" data-rel="2" onclick="">
@@ -487,7 +487,7 @@
                                                                     <form action="" method="post">
                                                                         <input type="hidden" name="token" value="">
                                                                         <input type="hidden" name="id_product" value="7">
-                                                                        <a class="add-to-cart" href="#" data-button-action="add-to-cart"><i
+                                                                        <a class="add-to-cart" href="#" data-button-action=""><i
                                                                                 class="novicon-cart"></i></a>
                                                                     </form>
                                                                     <a class="addToWishlist wishlistProd_7" href="#" data-rel="7" onclick="">
@@ -668,7 +668,7 @@
                                                                                         @csrf
                                                                                         <input type="hidden" name="variant_id" value="{{ $variant->varient_id }}">
                                                                                         <input type="hidden" name="quantity" value="1">
-                                                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action="add-to-cart"><i
+                                                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
                                                                                                 class="novicon-cart"></i><span>Add
                                                                                                     to cart</span></a>
                                                                                     </form>
@@ -772,7 +772,7 @@
                                                                                         @csrf
                                                                                         <input type="hidden" name="variant_id" value="{{ $variant->varient_id }}">
                                                                                         <input type="hidden" name="quantity" value="1">
-                                                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action="add-to-cart"><i
+                                                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
                                                                                                 class="novicon-cart"></i><span>Add
                                                                                                     to cart</span></a>
                                                                                     </form>
@@ -881,7 +881,7 @@
                                                                                                     @csrf
                                                                                                     <input type="hidden" name="variant_id" value="{{ $variant->varient_id }}">
                                                                                                     <input type="hidden" name="quantity" value="1">
-                                                                                                    <a class="add-to-cart" href="javascript:void(0)" data-button-action="add-to-cart"><i
+                                                                                                    <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
                                                                                                             class="novicon-cart"></i><span>Add
                                                                                                     to cart</span></a>
                                                                                                 </form>

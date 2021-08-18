@@ -9,7 +9,7 @@ class WelcomeCustomerUser
 {
     use SerializesModels;
 
-    public User $user;
+    public $user;
 
     /**
      * Create a new event instance.

@@ -12,7 +12,7 @@ class ImageRepository implements ImageInterface
     {
         $uploadPath = storage_path($uploadPath);
         $extension = $file->getClientOriginalExtension();
-        $fileName = is_null($fileName) ? Str::uuid() : $fileName . '.' . $extension;
+        $fileName = is_null($fileName) ? Str::uuid(). '.' . $extension : $fileName . '.' . $extension;
         $file->move($uploadPath, $fileName);
         return $fileName;
     }
