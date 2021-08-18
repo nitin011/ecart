@@ -353,9 +353,13 @@
 
 <!-- script start -->
 <script type="text/javascript" src="{{asset('user/js/function.js')}}"></script>
+<script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     var addToCartUrl = '{{ route('customer.cart.add') }}';
     var deleteCartItemUrl = '{{ route('customer.cart.ajax-delete') }}';
+    var cartSvg = '{{ asset('user/images/icons/cart.svg') }}';
+    var loadingSvg = '{{ asset('user/images/icons/loading.svg') }}';
+    var cartUrl ='{{ route('customer.checkout.proceed') }}';
 
     $.ajaxSetup({
         headers: {

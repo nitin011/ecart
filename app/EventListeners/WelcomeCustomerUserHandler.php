@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class WelcomeCustomerUserHandler
 {
-    protected EmailService $email_service;
+    protected $email_service;
 
     public function __construct(EmailService $emailService)
     {

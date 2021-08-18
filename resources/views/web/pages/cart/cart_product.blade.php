@@ -6,7 +6,7 @@
     .cart .cart-product-name{font-weight: 600; color: #000;}
     .cart .cart-product-price{font-weight: 600; color: #000}
     .cart .cart-product-price span:first-child{color: green;}
-    .cart .cart-product-price span:last-child{color: red;cursor: pointer;}
+    .cart .cart-product-price a:hover{color: red;}
 </style>
 
 @if(\Cart::getContent()->count())
@@ -25,7 +25,7 @@
 @endforeach
 @if(\Cart::getContent()->count())
     <hr style="margin: 10px 0">
-    <div style="width:100%;font-weight:600;text-align:center;">Total Price: {{ formatPrice(\Cart::getTotal()) }}</div>
+    <div style="width:100%;font-weight:600;text-align:center;">Total Price: {{ formatPrice(\Cart::getSubTotal()) }}</div>
 @endif
 @else
     No products in the cart

@@ -52,7 +52,7 @@ class OrderController extends Controller
             }
             $cities = $this->cityService->getActive();
 
-            return view('customer.pages.checkout', compact('coupon', 'cities', 'vat', 'cart', 'delivery_charge', 'time_slot'));
+            return view('web.pages.checkout', compact('coupon', 'cities', 'vat', 'cart', 'delivery_charge', 'time_slot'));
         } catch (\Exception $e) {
             return redirect()->route('customer.index')->with('error', $e->getMessage());
         }

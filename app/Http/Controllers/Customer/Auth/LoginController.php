@@ -37,7 +37,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('customer.auth.login');
+        return view('web.auth.login');
     }
 
     /**
@@ -65,6 +65,9 @@ class LoginController extends Controller
         $request->validate([
             'user_phone' => 'required',
             'user_password' => 'required|min:6'
+        ],[
+            'user_phone.required' => 'User email and phone no. is required.',
+            'user_password.required' => 'Password is required.'
         ]);
         if (is_numeric($request->user_phone)) {
             $validator = Validator::make($request->all(), [

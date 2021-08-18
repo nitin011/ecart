@@ -388,8 +388,7 @@
 @section('scripts')
     @if(\Cart::getSubTotal() >= $site_configurations['min_order_amt_value'])
         <!-- Include the PayPal JavaScript SDK -->
-        <script
-            src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}&currency={{ config('services.paypal.currency') }}"></script>
+        <script src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}&currency={{ config('services.paypal.currency') }}"></script>
         <script>
             // Render the PayPal button into #paypal-button-container
             paypal.Buttons({

@@ -57759,7 +57759,7 @@ p.seller_name {
     content: "\e64b";
     font-family: 'themify';
     position: absolute;
-    display: block;
+    display: none;
     color: #848484;
     top: 50%;
     right: 15px;
@@ -57993,12 +57993,14 @@ select.not_chosen.form-control:focus {
     margin-top: 20px;
 }
 
+.arrordian-section .card .card-body .delivery-accordian .input-box {
+    margin-bottom: 30px;
+}
 .arrordian-section .card .card-body .delivery-accordian input {
     border: 1px solid #e3e9ef;
     width: 100%;
     padding: 7px 20px;
     border-radius: 4px;
-    margin-bottom: 30px;
 }
 
 .arrordian-section .card .card-body .delivery-accordian .input-group .input-box:first-child {

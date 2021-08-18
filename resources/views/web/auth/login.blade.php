@@ -1,5 +1,6 @@
 @extends('web.layout.app')
-
+@section('title','Login')
+@section('page','index')
 @section('content')
     <!-- wrapper start -->
     <div id="wrapper-site">
@@ -15,32 +16,48 @@
                                         <div class="login mb-50">
                                             <div class="login-form-container">
                                                 <div class="login-text">
-                                                    <h3>Login</h3>
-                                                    <p>Please Register using account detail bellow.</p>
+                                                    <h3>{{ __('Login') }}</h3>
                                                 </div>
 
-                                                <form class="login-form" role="form" method="post">
+                                                <form class="login-form" role="form" method="post" action="{{ route('customer.login') }}">
+                                                    @csrf
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <input type="text" class="form-control" placeholder="Username" name="name">
+                                                            <input type="text" class="form-control" placeholder="{{ __('Email or Phone Number') }}" name="user_phone">
                                                         </div>
+                                                        @error('user_phone')
+                                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <input type="password" class="form-control" placeholder="Password" name="password">
+                                                            <input type="password" class="form-control" placeholder="Password" name="user_password">
                                                         </div>
+                                                        @error('user_password')
+                                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                                        @enderror
                                                     </div>
                                                     <div class="button-box mt-30">
                                                         <div class="login-toggle-btn">
                                                             <input type="checkbox">
                                                             <label>Remember me</label>
-                                                            <a href="#">Forgot Password?</a>
+                                                            <a href="{{ route('customer.password.email') }}">Forgot Password?</a>
                                                         </div>
-                                                        <button type="submit" class="btn btn-common log-btn btn-primary w-100 mt-20">Login</button>
+                                                        <button type="submit" class="btn btn-common log-btn btn-primary w-100 mt-20">{{ __('Login') }}</button>
                                                     </div>
                                                 </form>
-
+                                                <p class="text-center mt-15">
+                                                New to {{ env('APP_NAME') }}?
+                                                <a href="{{ route('customer.register') }}" style="color:blue !important;">
+                                                    <strong>Register</strong>
+                                                </a>
+                                                </p>
                                             </div>
+
                                         </div>
 
                                     </div>
@@ -58,3 +75,11 @@
     </div>
     <!-- wrapper end -->
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $('.toggle-nav').trigger('click');
+        });
+    </script>
+@endpush

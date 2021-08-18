@@ -162,7 +162,7 @@
                                                             <button class="btn btn-primary add-to-cart" data-button-action="" type="button">
                                                                 <div
                                                                     class="icon-cart d-flex align-items-center justify-content-center">
-                                                                    <svg version="1.1" id="shopping-cart-2"
+                                                                    {{--<svg version="1.1" id="shopping-cart-2"
                                                                          xmlns="http://www.w3.org/2000/svg"
                                                                          fill="#fff" height="20px" width="20px"
                                                                          xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -234,7 +234,8 @@
                                                                         </g>
                                                                         <g>
                                                                         </g>
-                                                                        </svg>
+                                                                        </svg>--}}
+                                                                    <img src="{{ asset('user/images/icons/cart.svg') }}" alt=""/>
                                                                 </div>
                                                                 <span>Add to cart</span>
                                                             </button>
@@ -323,7 +324,7 @@
                             <section class="relate-product product-accessories clearfix">
                                 <h3 class="h5 title_block">Top Featured Products<span class="sub_title">Hand-picked
                                             arrivals from the best designer</span></h3>
-                                <div class="products product_list grid owl-carousel owl-theme" data-autoplay="true" data-autoplayTimeout="6000" data-loop="true" data-items="5" data-items_large="4" data-margin="0" data-nav="true" data-dots="false" data-items_mobile="2">
+                                <div class="products product_list grid owl-carousel owl-theme" data-autoplay="false" data-autoplayTimeout="6000" data-loop="true" data-items="5" data-items_large="4" data-margin="0" data-nav="true" data-dots="false" data-items_mobile="2">
                                     @foreach($featured_products as $f_product)
                                         <div class="item  text-center">
                                             <div class="product-miniature js-product-miniature item-two first_item" data-id-product="{{$f_product->product_id}}" data-id-product-attribute="{{$f_product->cat_id}}">
@@ -373,8 +374,7 @@
                                                         @csrf
                                                         <input type="hidden" name="variant_id" value="{{ $f_product->variants[0]->varient_id }}">
                                                         <input type="hidden" name="quantity" value="1">
-                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
-                                                                class="novicon-cart"></i><span>Add to cart</span></a>
+                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><img src="{{ asset('user/images/icons/cart.svg') }}" style="width:20px; height:40px; margin:auto;" alt=""/><span>Add to cart</span></a>
                                                     </form>
                                                     <a class="addToWishlist wishlistProd_1" href="#" data-rel="1" onclick="">
                                                         <i class="fa fa-heart"></i>

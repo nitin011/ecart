@@ -377,8 +377,7 @@
                                                                     <form action="" method="post">
                                                                         <input type="hidden" name="token" value="">
                                                                         <input type="hidden" name="id_product" value="2">
-                                                                        <a class="add-to-cart" href="#" data-button-action=""><i
-                                                                                class="novicon-cart"></i></a>
+                                                                        <a class="add-to-cart" href="#" data-button-action=""><img src="{{ asset('user/images/icons/cart.svg') }}" style="width:20px; height:40px; margin:auto;" alt=""/></a>
                                                                     </form>
                                                                     <a class="addToWishlist wishlistProd_2" href="#" data-rel="2" onclick="">
                                                                         <i class="fa fa-heart"></i>
@@ -487,8 +486,7 @@
                                                                     <form action="" method="post">
                                                                         <input type="hidden" name="token" value="">
                                                                         <input type="hidden" name="id_product" value="7">
-                                                                        <a class="add-to-cart" href="#" data-button-action=""><i
-                                                                                class="novicon-cart"></i></a>
+                                                                        <a class="add-to-cart" href="#" data-button-action=""><img src="{{ asset('user/images/icons/cart.svg') }}" style="width:20px; height:40px; margin:auto;" alt=""/></a>
                                                                     </form>
                                                                     <a class="addToWishlist wishlistProd_7" href="#" data-rel="7" onclick="">
                                                                         <i class="fa fa-heart"></i>
@@ -668,8 +666,7 @@
                                                                                         @csrf
                                                                                         <input type="hidden" name="variant_id" value="{{ $variant->varient_id }}">
                                                                                         <input type="hidden" name="quantity" value="1">
-                                                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
-                                                                                                class="novicon-cart"></i><span>Add
+                                                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><img src="{{ asset('user/images/icons/cart.svg') }}" style="width:20px; height:40px; margin:auto;" alt=""/><span>Add
                                                                                                     to cart</span></a>
                                                                                     </form>
 
@@ -772,8 +769,7 @@
                                                                                         @csrf
                                                                                         <input type="hidden" name="variant_id" value="{{ $variant->varient_id }}">
                                                                                         <input type="hidden" name="quantity" value="1">
-                                                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
-                                                                                                class="novicon-cart"></i><span>Add
+                                                                                        <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><img src="{{ asset('user/images/icons/cart.svg') }}" style="width:20px; height:40px; margin:auto;" alt=""/><span>Add
                                                                                                     to cart</span></a>
                                                                                     </form>
                                                                                     <a class="addToWishlist wishlistProd_1" href="javascript:void(0)" data-rel="1" onclick="">
@@ -881,8 +877,7 @@
                                                                                                     @csrf
                                                                                                     <input type="hidden" name="variant_id" value="{{ $variant->varient_id }}">
                                                                                                     <input type="hidden" name="quantity" value="1">
-                                                                                                    <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><i
-                                                                                                            class="novicon-cart"></i><span>Add
+                                                                                                    <a class="add-to-cart" href="javascript:void(0)" data-button-action=""><img src="{{ asset('user/images/icons/cart.svg') }}" style="width:20px; height:40px; margin:auto;" alt=""/><span>Add
                                                                                                     to cart</span></a>
                                                                                                 </form>
                                                                                                 <a class="addToWishlist wishlistProd_1" href="javascript:void(0)" data-rel="1" onclick="">
