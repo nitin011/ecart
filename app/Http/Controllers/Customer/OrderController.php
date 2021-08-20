@@ -7,18 +7,20 @@ use App\Interfaces\ConfigurationInterface;
 use App\Interfaces\Customer\CartInterface;
 use App\Interfaces\Customer\OrderInterface;
 use App\Interfaces\Customer\OrderItemInterface;
+use App\Interfaces\Customer\ProductVariantInterface;
 use App\Interfaces\Customer\TransactionInterface;
 use App\Models\TimeSlot;
 use App\Services\CityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use function Doctrine\Common\Cache\Psr6\get;
 
 class OrderController extends Controller
 {
-    protected $configurationRepository, $cartRepository, $cityService, $orderRepository, $orderItemRepository, $transactionRepository;
+    protected $configurationRepository, $cartRepository, $cityService, $orderRepository, $orderItemRepository, $transactionRepository, $productVariantRepository;
 
-    public function __construct(CityService $cityService, ConfigurationInterface $configurationRepository, TransactionInterface $transactionRepository, OrderItemInterface $orderItemRepository, CartInterface $cartRepository, OrderInterface $orderRepository)
+    public function __construct(CityService $cityService, ConfigurationInterface $configurationRepository, TransactionInterface $transactionRepository, OrderItemInterface $orderItemRepository, CartInterface $cartRepository, OrderInterface $orderRepository, ProductVariantInterface $productVariantRepository)
     {
         $this->cityService = $cityService;
         $this->configurationRepository = $configurationRepository;
@@ -26,6 +28,7 @@ class OrderController extends Controller
         $this->orderItemRepository = $orderItemRepository;
         $this->cartRepository = $cartRepository;
         $this->orderRepository = $orderRepository;
+        $this->productVariantRepository = $productVariantRepository;
     }
 
     public function index()
@@ -52,10 +55,36 @@ class OrderController extends Controller
             }
             $cities = $this->cityService->getActive();
 
-            return view('web.pages.checkout', compact('coupon', 'cities', 'vat', 'cart', 'delivery_charge', 'time_slot'));
+            return view('web.pages.checkout.checkout', compact('coupon', 'cities', 'vat', 'cart', 'delivery_charge', 'time_slot'));
         } catch (\Exception $e) {
             return redirect()->route('customer.index')->with('error', $e->getMessage());
         }
+    }
+
+    public  function checkoutAjax(Request $request){
+
+        if ($request->type == 'delete'){
+            \Cart::remove($request->id);
+        }
+
+        /*if ($request->type == 'add'){
+            $variant = $this->productVariantRepository->getByIdWithProduct($request->id);
+            $this->cartRepository->insert($variant, $request->qty);
+        }*/
+        if ($request->type == 'add' || $request->type == 'less'){
+            $variant = $this->productVariantRepository->getByIdWithProduct($request->id);
+            $cartItem= \Cart::get($request->id);
+            \Cart::update($request->id, [
+                'name' => $variant->product->product_name,
+                'price' => $variant->price,
+                'quantity' => $request->qty - $cartItem->quantity,
+                'attributes' => array(),
+                'associatedModel' => $variant
+            ]);
+        }
+
+        $html= view('web.pages.checkout.checkout_product')->render();
+        return response()->json(['html'=>$html]);
     }
 
     public function confirmCheckout(StoreOrderRequest $request)

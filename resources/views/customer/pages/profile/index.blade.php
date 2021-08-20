@@ -1,28 +1,34 @@
-@extends('customer.layouts.master')
+@extends('web.layout.app')
 @section('title','Profile')
 @section('content')
-    <!-- border bottom -->
-    <div class="border-bottom"></div>
-    <!-- ee Breadcfumb -->
-    <div class="ee-Breadcrumb">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('customer.index') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
-                        </ol>
-                    </nav>
+    <div id="wrapper-site">
+        <div id="content-wrapper" class="full-width">
+            <div class="breadcrumb_section bg_gray page-title-mini">
+                <div class="container">
+                    <!-- STRART CONTAINER -->
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="page-title">
+                                <h1>Profile</h1>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <ol class="breadcrumb d-flex justify-content-md-end">
+                                <li class="breadcrumb-item"><a href="{{ route('customer.index') }}">Home</a></li>
+                                <li class="breadcrumb-item active">Profile</li>
+                            </ol>
+                        </div>
+                    </div>
                 </div>
+                <!-- END CONTAINER-->
             </div>
-        </div>
-    </div>
+            <div id="main">
+                <section id="content" class="page-home pagehome-two">
+                    <div class="main_content mt-30 mb-30">
 
-    <!-- checkout content -->
-    <div class="bg-grey mt-0">
-        <div class="container">
-            <div class="row">
+
+                        <div class="container">
+                            <div class="row">
                 <div class="col-lg-12">
                     @include('customer.layouts.partials.flash_messages')
                 </div>
@@ -91,9 +97,13 @@
                 </div>
             </div>
         </div>
-    </div>
+                    </div></section></div></div></div>
     <!-- Contact Form End -->
 @endsection
-@section('scripts')
-
-@endsection
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $('.toggle-nav').trigger('click');
+        });
+    </script>
+@endpush

@@ -29,7 +29,7 @@ class AddressController extends Controller
     public function index()
     {
         Session::put('redirect_to', Url::previous());
-        return response()->view('customer.pages.address.index');
+        return response()->view('web.pages.address.index');
     }
 
     /**

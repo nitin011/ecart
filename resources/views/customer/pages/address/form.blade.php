@@ -81,9 +81,9 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-3">
-                <div class="form-group">
+                <div class="custom_select" style="width: 100%;">
                     <label for="city_id">City<span class="text-danger">*</span></label>
-                    <select name="city_id" id="city_id" class="form-control">
+                    <select name="city_id" id="city_id" class="">
                         @foreach($cities as $city)
                             <option
                                 value="{{ $city->id }}"

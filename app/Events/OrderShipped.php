@@ -12,7 +12,7 @@ class OrderShipped
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
 
-    public Order $order;
+    public $order;
 
     /**
      * Create a new event instance.

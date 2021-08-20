@@ -67,7 +67,7 @@ class RegisterController extends Controller
             return redirect()->route('customer.index')->with('warning', 'You already logged in.');
         }
 
-        return view('customer.auth.register');
+        return view('web.auth.register');
     }
 
     public function cleanString($phone)

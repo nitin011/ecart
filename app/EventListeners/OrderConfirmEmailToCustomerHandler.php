@@ -9,7 +9,7 @@ use App\Services\EmailService;
 
 class OrderConfirmEmailToCustomerHandler
 {
-    protected EmailService $email_service;
+    protected $email_service;
 
     public function __construct(EmailService $emailService)
     {

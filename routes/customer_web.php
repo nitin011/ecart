@@ -62,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
      * Checkout Routes
      */
     Route::get('checkout', 'OrderController@checkout')->name('customer.checkout.proceed');
+    Route::post('checkout-ajax', 'OrderController@checkoutAjax')->name('customer.checkout.ajax');
     Route::post('checkout', 'OrderController@confirmCheckout')->name('customer.checkout.confirm');
     // Route::get('checkout/confirm', 'OrderController@confirmCheckout')->name('customer.checkout.confirm');
     Route::post('checkout/transaction-store', 'TransactionController@transactionStore')->name('customer.order.transaction.store');

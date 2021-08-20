@@ -1,9 +1,4 @@
 function confirmPureDelete(delete_url) {
-    var bootBoxDelete = $('#bootBoxDelete');
-    bootBoxDelete.attr('action', delete_url);
-    bootBoxDelete.submit();
-
-    return;
     bootbox.confirm({
         message: "Are you sure you want to delete ?",
         buttons: {

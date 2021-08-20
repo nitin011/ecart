@@ -353,6 +353,9 @@
 
 <!-- script start -->
 <script type="text/javascript" src="{{asset('user/js/function.js')}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.1/bootbox.min.js"></script>
+<script type="text/javascript" src="{{asset('theme/vendor/confirmDelete/confirm_delete.js')}}"></script>
+@include('customer.layouts.globals.delete')
 <script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     var addToCartUrl = '{{ route('customer.cart.add') }}';
