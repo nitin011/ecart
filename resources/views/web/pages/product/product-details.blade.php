@@ -110,7 +110,7 @@
                                                             <label class="control-label">Description:</label>
                                                             <div>
                                                                     <span>
-                                                                        <a>{{ $variant->short_description }}</a>
+                                                                        <a>{{ $variant->short_description !='null'?(!empty($variant->short_description)?$variant->short_description:'') : '' }}</a>
                                                                     </span>
                                                             </div>
                                                         </div>
