@@ -63,28 +63,33 @@ class OrderController extends Controller
 
     public  function checkoutAjax(Request $request){
 
-        if ($request->type == 'delete'){
-            \Cart::remove($request->id);
+        try {
+            if ($request->type == 'delete'){
+                \Cart::remove($request->id);
+                $msg= "Item removed successfully!";
+            }
+
+            if ($request->type == 'add' || $request->type == 'less'){
+                $variant = $this->productVariantRepository->getByIdWithProduct($request->id);
+                $cartItem= \Cart::get($request->id);
+                \Cart::update($request->id, [
+                    'name' => $variant->product->product_name,
+                    'price' => $variant->price,
+                    'quantity' => $request->qty - $cartItem->quantity,
+                    'attributes' => array(),
+                    'associatedModel' => $variant
+                ]);
+
+                $msg= "Cart updated successfully";
+            }
+
+            $html= view('web.pages.checkout.checkout_product')->render();
+
+            return response()->json(['status'=>true,'message'=>$msg, 'html'=>$html]);
+        }catch(\Exception $exception){
+            return response()->json(['status'=>false,'message'=>'Something went wrong', 'html'=>null]);
         }
 
-        /*if ($request->type == 'add'){
-            $variant = $this->productVariantRepository->getByIdWithProduct($request->id);
-            $this->cartRepository->insert($variant, $request->qty);
-        }*/
-        if ($request->type == 'add' || $request->type == 'less'){
-            $variant = $this->productVariantRepository->getByIdWithProduct($request->id);
-            $cartItem= \Cart::get($request->id);
-            \Cart::update($request->id, [
-                'name' => $variant->product->product_name,
-                'price' => $variant->price,
-                'quantity' => $request->qty - $cartItem->quantity,
-                'attributes' => array(),
-                'associatedModel' => $variant
-            ]);
-        }
-
-        $html= view('web.pages.checkout.checkout_product')->render();
-        return response()->json(['html'=>$html]);
     }
 
     public function confirmCheckout(StoreOrderRequest $request)

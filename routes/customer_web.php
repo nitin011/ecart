@@ -54,15 +54,15 @@ Route::get('cart/delete', 'CartController@deleteItemAjax')->name('customer.cart.
 
 Route::post('/cart/apply-coupon', 'CartController@applyCoupon')->name('customer.apply-coupon');
 Route::get('/cart/delete-coupon', 'CartController@deleteCoupon')->name('customer.delete-coupon');
-
+Route::get('checkout', 'OrderController@checkout')->name('customer.checkout.proceed');
+Route::post('checkout-ajax', 'OrderController@checkoutAjax')->name('customer.checkout.ajax');
 Route::group(['middleware' => 'auth'], function () {
     Route::post('logout', 'Auth\LoginController@logout')->name('customer.logout');
 
     /**
      * Checkout Routes
      */
-    Route::get('checkout', 'OrderController@checkout')->name('customer.checkout.proceed');
-    Route::post('checkout-ajax', 'OrderController@checkoutAjax')->name('customer.checkout.ajax');
+
     Route::post('checkout', 'OrderController@confirmCheckout')->name('customer.checkout.confirm');
     // Route::get('checkout/confirm', 'OrderController@confirmCheckout')->name('customer.checkout.confirm');
     Route::post('checkout/transaction-store', 'TransactionController@transactionStore')->name('customer.order.transaction.store');

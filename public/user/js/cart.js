@@ -19,9 +19,10 @@ $(document).ready(function () {
                 if (res.status){
                     $("#cart-products-count").text(res.data.cart_count);
                     $("#cart-content").html(res.data.cart_items_html);
-                    itemAddedSwal(res.message)
+                    toastr["success"](res.message, "Success");
                 }else{
-                    swal('error', res.message, 'error');
+                    //swal('error', res.message, 'error');
+                    toastr["error"](res.message, "Error");
                 }
             },
             complete: function () {
@@ -40,47 +41,48 @@ $(document).ready(function () {
     $(document).on('click', '.remove-item',function () {
         let id= $(this).data('id');
         let popup= true;
-        $.ajax({
-            url: deleteCartItemUrl,
-            method:'GET',
-            data: {
-                variant_id: id,
-                popup: popup
-            },
-            beforeSend: function () {
-
-            },
-            success:function (res) {
-                if (res.status){
-                    $("#cart-products-count").text(res.data.cart_count);
-                    $("#cart-content").html(res.data.cart_items_html);
-                    swal('success', res.message, 'success')
-                }else{
-                    swal('error', res.message, 'error');
+        bootbox.confirm({
+            message: "Are you sure you want to delete ?",
+            buttons: {
+                confirm: {
+                    label: "Yes",
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: "No",
+                    className: 'btn-danger'
                 }
             },
-            complete: function () {
+            callback: function (result) {
+                if (result === true) {
+                    $.ajax({
+                        url: deleteCartItemUrl,
+                        method:'GET',
+                        data: {
+                            variant_id: id,
+                            popup: popup
+                        },
+                        beforeSend: function () {
 
+                        },
+                        success:function (res) {
+                            if (res.status){
+                                $("#cart-products-count").text(res.data.cart_count);
+                                $("#cart-content").html(res.data.cart_items_html);
+                                toastr["success"](res.message, "Success");
+                            }else{
+                                toastr["error"](res.message, "Error");
+                            }
+                        },
+                        complete: function () {
+
+                        }
+                    });
+                }
             }
         });
+
     });
 });
 
-function itemAddedSwal(message) {
-    swal('success', message, 'success', {
-        buttons: {
-            basket: "Go to Basket",
-            close: "Continue Shopping"
-        }
-    }).then((value) => {
-        switch (value) {
-            case 'basket':
-                console.log('i am in');
-                window.location.href = cartUrl;
-                break;
-            case 'close':
-                return;
-        }
-    });
-}
 

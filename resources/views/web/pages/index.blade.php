@@ -205,6 +205,7 @@
                                                             $count=0
                                                         @endphp
                                                         @foreach($beauties as $beauty)
+
                                                         <div class="d-flex flex-wrap align-items-start product-miniature js-product-miniature {{ $count ==0?'first_item': ($count==3?'last_item':'') }}" data-id-product="{{$beauty->varient_id}}" data-id-product-attribute="{{$beauty->product_id}}" itemscope>
                                                             <div class="col-12 col-w37 no-padding">
                                                                 <div class="thumbnail-container">
@@ -246,7 +247,7 @@
                                                             </div>
                                                         </div>
                                                             @php $count++ @endphp
-                                                            @if($loop->iteration % 4 ==0)
+                                                            @if($loop->iteration % 4 ==0 && count($beauties) != $loop->iteration)
                                                                 @php $count = 0 @endphp
                                                     </div>
                                                     <div class="item  text-center">
@@ -603,7 +604,7 @@
                                                 <div class="block_content  col-lg-12 col-md-12 ">
                                                     <div class="product_tab_content tab-content">
                                                         <div class="" id="">
-                                                            <div id="groupproducttab937980878-newproducts" class="product_list grid owl-carousel owl-theme" data-autoplay="false" data-autoplaytimeout="6000" data-loop="true" data-margin="30" data-dots="false" data-nav="true" data-items="3" data-items_large="1" data-items_tablet="2"
+                                                            <div id="groupproducttab937980878-newproducts" class="product_list grid owl-carousel owl-theme" data-autoplay="true" data-autoplaytimeout="6000" data-loop="true" data-margin="30" data-dots="false" data-nav="true" data-items="3" data-items_large="1" data-items_tablet="2"
                                                                  data-items_mobile="2">
 
                                                                 <div class="item  text-center">
@@ -616,10 +617,9 @@
                                                                         }
                                                                     @endphp
                                                                     @foreach($trendings as $key => $variant)
-                                                                        @php
-                                                                        $check= $loop->iteration % 2 == 0?true:false
-                                                                        @endphp
-                                                                    <div class="d-flex flex-wrap align-items-center product-miniature js-product-miniature item-row {{ $check ? 'last_item' : 'first_item' }}" data-id-product="{{$variant->varient_id}}" data-id-product-attribute="{{$variant->product_id}}" itemscope>
+
+
+                                                                    <div class="d-flex flex-wrap align-items-center product-miniature js-product-miniature item-row {{ $loop->iteration % 2 == 0 ? 'last_item' : 'first_item' }}" data-id-product="{{$variant->varient_id}}" data-id-product-attribute="{{$variant->product_id}}" itemscope>
                                                                         <div class="col-12 col-w40 pl-0">
                                                                             <div class="thumbnail-container">
 
@@ -682,12 +682,11 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                        @if($check)
+                                                                        @if($loop->iteration % 2 == 0 && count($trendings) != $loop->iteration)
                                                                 </div>
                                                                 <div class="item  text-center">
-                                                                        @endif
+                                                                    @endif
                                                                     @endforeach
-
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{asset('user/css/style.css')}}" type="text/css" media="all">
     <link rel="stylesheet" href="{{asset('user/css/themify-icons.css')}}" type="text/css" media="all">
     <link rel="stylesheet" href="{{asset('user/css/responsive.css')}}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{asset('user/css/toastr.min.css')}}" type="text/css" media="all">
     <!-- stylesheet -->
 
     <!-- script -->
@@ -353,10 +354,30 @@
 
 <!-- script start -->
 <script type="text/javascript" src="{{asset('user/js/function.js')}}"></script>
+<script type="text/javascript" src="{{asset('user/js/toastr.min.js')}}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.1/bootbox.min.js"></script>
 <script type="text/javascript" src="{{asset('theme/vendor/confirmDelete/confirm_delete.js')}}"></script>
 @include('customer.layouts.globals.delete')
 <script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "3000",
+        "timeOut": "5000",
+        "extendedTimeOut": "3000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+</script>
 <script>
     var addToCartUrl = '{{ route('customer.cart.add') }}';
     var deleteCartItemUrl = '{{ route('customer.cart.ajax-delete') }}';
