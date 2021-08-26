@@ -511,7 +511,7 @@
                                                 <div class="card">
                                                     <div class="card-head" id="headingFour">
                                                         <div class="container">
-                                                            <h2 class="mb-0 iocn-arroridan">
+                                                            <h2 class="mb-0 iocn-arroridan" onclick="($('#collapseTwo').collapse('show'),$('#collapseFour').collapse('hide'))">
                                                                 <div class="number-content">3</div>
                                                                 <div class="title-accordian">Payment</div>
                                                             </h2>
