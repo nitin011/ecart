@@ -342,7 +342,7 @@
     @include('web.layout.footer')
 
 
-        <div class="canvas-overlay"></div>
+        {{--<div class="canvas-overlay"></div>--}}
         <!-- back to top start -->
         <div id="back-top">
             <span>
