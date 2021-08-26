@@ -223,6 +223,7 @@
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>
+
                                                                 <form action="{{ route('customer.checkout.confirm') }}"
                                                                       method="POST" id="checkout-form"
                                                                       enctype="multipart/form-data">
@@ -245,7 +246,7 @@
                                                                     </div>
                                                                 </form>
                                                             @else
-                                                                <p>We need your phone number so we can inform you about
+                                                                {{--<p>We need your phone number so we can inform you about
                                                                     any
                                                                     delay or problem.
                                                                 </p>
@@ -269,7 +270,26 @@
                                                                     </div>
                                                                     <button class="code-title resend-btn">Resend Code
                                                                     </button>
+                                                                </div>--}}
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    @include('customer.layouts.partials.flash_messages')
                                                                 </div>
+                                                                <div class="col-6 text-center m-auto">
+                                                                    <form method="post" action="{{ route('customer.login') }}">
+                                                                        @csrf
+                                                                        <input type="hidden" name="checkout" value="1">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" placeholder="{{ __('Email or Phone Number') }}" name="user_phone">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="password" class="form-control" placeholder="Password" name="user_password">
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+
                                                             @endif
                                                         </div>
                                                     </div>
@@ -284,9 +304,7 @@
                                                 <div class="card">
                                                     <div class="card-head" id="headingTwo">
                                                         <div class="container">
-                                                            <h2 class="mb-0 iocn-arroridan collapsed"
-                                                                data-toggle="collapse" data-target="#collapseTwo"
-                                                                aria-expanded="false" aria-controls="collapseTwo">
+                                                            <h2 class="mb-0 iocn-arroridan">
                                                                 <div class="number-content">2</div>
                                                                 <div class="title-accordian"> Delivery Address</div>
                                                             </h2>
@@ -475,12 +493,6 @@
                                                                                         type="submit">Save
                                                                                     </button>
                                                                                 </div>
-                                                                                <div class="right-btn ml-auto">
-                                                                                    <button
-                                                                                        class="btn btn-primary next-block"
-                                                                                        type="button" data-open="3">Next
-                                                                                    </button>
-                                                                                </div>
                                                                             </div>
                                                                         </form>
                                                                     @endif
@@ -499,9 +511,7 @@
                                                 <div class="card">
                                                     <div class="card-head" id="headingFour">
                                                         <div class="container">
-                                                            <h2 class="mb-0 iocn-arroridan collapsed"
-                                                                data-toggle="collapse" data-target="#collapseFour"
-                                                                aria-expanded="false" aria-controls="collapseFour">
+                                                            <h2 class="mb-0 iocn-arroridan">
                                                                 <div class="number-content">3</div>
                                                                 <div class="title-accordian">Payment</div>
                                                             </h2>
@@ -511,7 +521,11 @@
                                                          aria-labelledby="headingFour" data-parent="#accordionExample">
                                                         <div class="card-body pt-0">
                                                             <div id="paypal-checkout" style="margin-top:25px;"></div>
-
+                                                             @if(getCartTotal() < 0)
+                                                                 <div style="width: 100%; text-align: center;">
+                                                                <span style="color: red;">Amount must be greater than <strong>Zero(0)</strong></span>
+                                                                 </div>
+                                                             @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -644,7 +658,7 @@
                                                         Total Amount
                                                     </div>
                                                     <div class="amount-right-content text-green">
-                                                        {{ auth()->check()?formatPrice(getCartTotal()):formatPrice(\Cart::getTotal()) }}
+                                                        {{ auth()->check()?formatPrice(getCartTotal()>0?getCartTotal():0):formatPrice(\Cart::getTotal()) }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -744,12 +758,14 @@
                         // Show a success message to the buyer
                         document.getElementById("transaction_id").value = details.id;
                         storeTransaction(details);
-                        swal("Success!", 'Transaction completed by ' + details.payer.name.given_name + '!', "success");
+                        //swal("Success!", 'Transaction completed by ' + details.payer.name.given_name + '!', "success");
+                        toastr["success"]('Transaction completed by ' + details.payer.name.given_name + '!', "Success");
                     });
                 },
                 onError: function (err) {
                     // Show an error page here, when an error occurs
                     swal("Error!", err, "error");
+
                 },
                 style: {
                     color: 'blue',
@@ -815,7 +831,7 @@
                     document.getElementById("checkout-form").submit();
                 },
                 error: function (response) {
-                    swal('Error', response, 'error');
+                    toastr["error"](response, "Error");
                 },
                 /*dataType: "json",
                 contentType: "application/json"*/

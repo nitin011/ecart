@@ -97,6 +97,9 @@ class LoginController extends Controller
         if (!is_null($user) && Hash::check($request->user_password, $user->user_password)) {
             Auth::guard('web')->login($user);
             $message = "Welcome " . auth()->guard('web')->user()->user_name;
+            if ($request->has('checkout')){
+                return redirect()->back();
+            }
             return redirect()->intended('/')->with('success', $message);
         }
         $validator->after(function ($validator) {
