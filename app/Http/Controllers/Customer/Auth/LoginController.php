@@ -88,6 +88,8 @@ class LoginController extends Controller
         }
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
+        }if (is_null($user)) {
+            return redirect()->back()->with('error', 'User Not exits in our record. Please, register first');
         }
         if (is_null($user->email_verified_at)) {
             return redirect()->back()->with('warning', 'Please Verify Your Email First. we have sent you an verification email.');

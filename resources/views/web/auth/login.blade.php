@@ -13,6 +13,7 @@
                             <div class="nov-row page-home-right product-list-section col-lg-cus-12 col-lg-12 col-xs-12">
                                 <div class="nov-row-wrap row">
                                     <div class="col-md-12 col-lg-6 col-lg-offset-3 m-auto">
+                                        @include('customer.layouts.partials.flash_messages')
                                         <div class="login mb-50">
                                             <div class="login-form-container">
                                                 <div class="login-text">

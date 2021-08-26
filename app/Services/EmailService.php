@@ -33,10 +33,10 @@ class EmailService
         $result = null;
         if (is_array($to)) {
             foreach ($mail_params_array['to'] as $user_email) {
-                $result = $this->sendEmailToUser($user_email, $mail_params_array, $dynamic_data, $template);
+                //$result = $this->sendEmailToUser($user_email, $mail_params_array, $dynamic_data, $template);
             }
         } else {
-            $result = $this->sendEmailToUser($to, $mail_params_array, $dynamic_data, $template);
+            //$result = $this->sendEmailToUser($to, $mail_params_array, $dynamic_data, $template);
         }
         return $result;
     }
