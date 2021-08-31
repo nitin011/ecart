@@ -26,8 +26,18 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'first_name' => 'required',
-            'user_email' => 'nullable|email|',Rule::unique('users', 'user_email')->ignore($this->user),
-            'user_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:12',Rule::unique('users', 'user_phone')->ignore($this->user)
+            'user_email' => 'required|email',
+            'user_phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:12',
+            'c_password' =>  'required_with:n_password',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'user_email.required'=>"Email is required.",
+            'user_phone.required'=>"Email is required.",
+            'c_password.required_with'=>"The current password is necessary when changing the password.",
         ];
     }
 }

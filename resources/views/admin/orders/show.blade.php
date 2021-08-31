@@ -34,10 +34,10 @@
                                 <div class="col-md-6">
                                     <h6>{{ $order->user->user_name }}</h6>
                                     <address>
-                                        <p>{{ $order->address->receiver_name }}<br/>
+                                        <p>{{ $order->address->receiver_name??null }}<br/>
                                             {{ $order->address->receiver_phone??null }}
                                             <br/>
-                                            {{ $order->address->city??null }}
+                                            {{ $order->address->city->name??null }}
                                             {{ $order->address->society??null }}
                                             <br/>
                                             {{ $order->address->house_or_flat_no??null }}

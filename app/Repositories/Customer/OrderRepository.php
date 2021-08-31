@@ -15,8 +15,9 @@ class OrderRepository implements OrderInterface
     public function getAll($perPage = null)
     {
         if (is_null($perPage))
-            return Order::query()->where('user_id', auth()->user()->user_id)->orderBy('order_date', 'desc')->get();
-        return Order::query()->where('user_id', auth()->user()->user_id)->orderBy('order_date', 'desc')->paginate($perPage);
+            return Order::query()->where('user_id', auth()->user()->user_id)->orderBy('created_at', 'desc')->get();
+        else
+            return Order::query()->where('user_id', auth()->user()->user_id)->orderByDesc('created_at')->paginate($perPage);
     }
 
     public function store(array $requestData)
