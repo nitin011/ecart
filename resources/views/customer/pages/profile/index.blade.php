@@ -52,13 +52,20 @@
                                                             <div class="dashboard_menu">
                                                                 <ul class="nav nav-tabs flex-column mb-50"
                                                                     role="tablist">
-
                                                                     <li class="nav-item">
-                                                                        <a class="nav-link active" id="orders-tab"
+                                                                        <a class="nav-link active" id="account-detail-tab"
+                                                                           data-toggle="tab" href="#account-detail"
+                                                                           role="tab" aria-controls="account-detail"
+                                                                           aria-selected="true"><i
+                                                                                class="ti-id-badge"></i>Account
+                                                                            details</a>
+                                                                    </li>
+                                                                    {{--<li class="nav-item">
+                                                                        <a class="nav-link" id="orders-tab"
                                                                            data-toggle="tab" href="#orders" role="tab"
                                                                            aria-controls="orders" aria-selected="false"><i
                                                                                 class="ti-shopping-cart-full"></i>Orders</a>
-                                                                    </li>
+                                                                    </li>--}}
                                                                     @if(\Cart::getContent()->count())
                                                                         <li class="nav-item">
                                                                             <a class="nav-link" id="payment-tab"
@@ -75,14 +82,7 @@
                                                                                 class="ti-location-pin"></i>My
                                                                             Address</a>
                                                                     </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link" id="account-detail-tab"
-                                                                           data-toggle="tab" href="#account-detail"
-                                                                           role="tab" aria-controls="account-detail"
-                                                                           aria-selected="true"><i
-                                                                                class="ti-id-badge"></i>Account
-                                                                            details</a>
-                                                                    </li>
+
                                                                     <li class="nav-item">
                                                                         <a class="nav-link" href="javascript:void(0)" onclick="$('#logout-form').submit();"><i
                                                                                 class="ti-lock" ></i>Logout</a>
@@ -99,7 +99,7 @@
                                                         <div class="col-lg-9 col-md-8">
                                                             <div class="tab-content dashboard_content">
                                                                 <!-- order section start -->
-                                                                <div class="tab-pane fade active show" id="orders"
+                                                                {{--<div class="tab-pane fade active show" id="orders"
                                                                      role="tabpanel" aria-labelledby="orders-tab">
                                                                     <div class="card">
                                                                         <div class="card-header">
@@ -166,7 +166,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div>--}}
                                                                 <!-- order section end -->
                                                             @if(\Cart::getContent()->count())
                                                                 <!-- payment section start -->
@@ -268,7 +268,7 @@
                                                                 <!-- billing address section end -->
 
                                                                 <!-- account details section start -->
-                                                                <div class="tab-pane fade" id="account-detail"
+                                                                <div class="tab-pane fade active show" id="account-detail"
                                                                      role="tabpanel"
                                                                      aria-labelledby="account-detail-tab">
                                                                     <div class="card">

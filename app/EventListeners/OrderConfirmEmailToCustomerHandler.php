@@ -19,6 +19,7 @@ class OrderConfirmEmailToCustomerHandler
     public function handle(OrderPlaced $event)
     {
         $order = $event->order;
+        $file= $event->generatePdf();
         $content_var_values = [
             'NAME' => $order->user->user_name, // 'Name of the User',
             'MAIL_USERNAME' => $order->user->user_email, //'Email Username',
@@ -33,6 +34,6 @@ class OrderConfirmEmailToCustomerHandler
             'from_name' => config('mail.from.name'),
             ];
         $email_template = 'order_confirm_email_to_customer';
-        $this->email_service->sendEmail($mail_params_array, $content_var_values, $email_template);
+        $this->email_service->sendEmail($mail_params_array, $content_var_values, $email_template, $file);
     }
 }

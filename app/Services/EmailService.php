@@ -23,25 +23,26 @@ class EmailService
 
     /**
      * @param $mail_params_array
-     * @param null $template
      * @param $dynamic_data
+     * @param null $template
+     * @param null $file
      * @return array|string|null
      */
-    public function sendEmail($mail_params_array, $dynamic_data, $template = null)
+    public function sendEmail($mail_params_array, $dynamic_data, $template = null, $file=null)
     {
         $to = $mail_params_array['to'];
         $result = null;
         if (is_array($to)) {
             foreach ($mail_params_array['to'] as $user_email) {
-                $result = $this->sendEmailToUser($user_email, $mail_params_array, $dynamic_data, $template);
+                $result = $this->sendEmailToUser($user_email, $mail_params_array, $dynamic_data, $template, $file);
             }
         } else {
-            $result = $this->sendEmailToUser($to, $mail_params_array, $dynamic_data, $template);
+            $result = $this->sendEmailToUser($to, $mail_params_array, $dynamic_data, $template, $file);
         }
         return $result;
     }
 
-    public function sendEmailToUser($to, $mail_params_array, $dynamic_data, $template = null)
+    public function sendEmailToUser($to, $mail_params_array, $dynamic_data, $template = null, $file =null)
     {
         try {
             $from = config('mail.from.address');
@@ -61,10 +62,13 @@ class EmailService
             $content = str_replace($key_array, $replace_array, $email_data->content);
             $content_data = ['email_content' => $content];
             try {
-                Mail::send('emails.sample', $content_data, function ($message) use ($to, $from, $from_name, $subject) {
+                Mail::send('emails.sample', $content_data, function ($message) use ($to, $from, $from_name, $subject, $file) {
                     $message->from($from, $from_name)
                         ->to($to)
                         ->subject($subject);
+                    if (!is_null($file)){
+                        $message->attachData($file['output'], $file['file']);
+                    }
 
                     if (isset($headers) && !empty($headers)) {
                         $headers = $message->getHeaders();

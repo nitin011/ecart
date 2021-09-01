@@ -75,6 +75,8 @@ Route::prefix('admin')->group(function () {
          */
         Route::resource('order', 'OrderController', ['as' => 'admin']);
         Route::get('order-invoice/print/{order_id}', 'OrderController@printInvoice')->name('admin.order.print-invoice');
+        Route::get('order-invoice/download/{order_id}', 'OrderController@downloadInvoice')->name('admin.order.download-invoice');
+        Route::get('order-invoice/resend/{order_id}', 'OrderController@resendInvoice')->name('admin.order.resend-invoice');
 
 ///////Delivery Boy////////
         Route::get('d_boy/list', 'DeliveryController@list')->name('d_boylist');

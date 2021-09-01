@@ -192,12 +192,7 @@
                         </td>
                         <td class="text-left">
                             <b>Shipping Info</b>
-                            <address>
-                                {{ $order->address->house_or_flat_no }} {{ $order->address->society }}<br/>
-                                {{ $order->address->landmark }},{{ $order->address->city }}<br/>
-                                {{ $order->address->state }}, Postcode: {{ $order->address->pincode }}<br/>
-                                Contact: {{ $order->address->receiver_phone }}
-                            </address>
+                            {!! view('customer.pages.address.partials.full_address',['address'=>$order->address])->render() !!}
                         </td>
                         <td>
                             <b>To</b><br>
@@ -248,11 +243,12 @@
             <td>{{ formatPrice($order->total_price) }}</td>
         </tr>
     </table>
-
+    @if(!isset($pdf))
     <div class="buttons no-print">
         <button onclick="window.print();">Print</button>
         {{--        <button>Download</button>--}}
     </div>
+    @endif
 </div>
 </body>
 </html>

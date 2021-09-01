@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\OrderPlaced;
 use App\Http\Controllers\Controller;
 use App\Interfaces\Admin\OrderInterface;
 use App\Interfaces\Admin\OrderItemInterface;
@@ -80,8 +81,10 @@ class OrderController extends Controller
     public function downloadInvoice($id)
     {
         $order = $this->orderRepository->getById($id);
-        $pdf = PDF::loadView('admin.orders.partials.invoice', ['order' => $order]);
-        return $pdf->download('invoice.pdf');
+        $html= view('admin.orders.partials.invoice', ['order' => $order,'pdf'=>true])->render();
+        $pdf = PDF::loadHTML($html)->setPaper('a4', 'landscape');
+        $fileName= '#'.$order->order_id.'-Invoice.pdf';
+        return $pdf->download($fileName);
         //   return redirect()->route('admin.order.index')->with('success', 'Order Deleted Successfully!');
     }
 
@@ -132,5 +135,11 @@ class OrderController extends Controller
             return response()->json($res);
         }
         return redirect()->route('admin.delivery_boy.index')->with('success', "Delivery Boy's Detail Updated Successfully!");
+    }
+
+    public function resendInvoice($id){
+        $order = $this->orderRepository->getById($id);
+        event(new OrderPlaced($order));
+        return redirect()->back()->with('success','Invoice sent successfully.');
     }
 }
