@@ -80,13 +80,13 @@
                                                                                     <h4 class="mb-3 font-weight-bold">
                                                                                         Order Summary</h4>
                                                                                     Sub Total<a
-                                                                                        class="pull-right">{{ formatPrice($order->total_price) }}</a><br/>
+                                                                                        class="pull-right">{{ formatPrice($order->price_without_delivery) }}</a><br/>
                                                                                     Delivery Charge<a
                                                                                         class="pull-right">{{ formatPrice($order->delivery_charge) }}</a><br/>
                                                                                     Coupon Discount<a
                                                                                         class="pull-right">{{ formatPrice($order->coupon_discount??(0.0)) }}</a><br/>
-                                                                                    Discount<a
-                                                                                        class="pull-right">{{ formatPrice($order->total_price - ($order->delivery_charges+$order->sub_total)) }}</a><br/>
+                                                                                    Total Discount<a
+                                                                                        class="pull-right">{{ formatPrice(-($order->delivery_charge-$order->coupon_discount)) }}</a><br/>
                                                                                     <hr class="my-1"/>
                                                                                     <h5 class="mb-0 font-weight-bold">
                                                                                         Total
