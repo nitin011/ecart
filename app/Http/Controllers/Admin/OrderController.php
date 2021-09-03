@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\OrderItemCancelEvent;
 use App\Events\OrderPlaced;
 use App\Http\Controllers\Controller;
 use App\Interfaces\Admin\OrderInterface;
 use App\Interfaces\Admin\OrderItemInterface;
 use App\Interfaces\Admin\OrderStatusInterface;
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Models\Address;
 use Illuminate\Support\Carbon;
@@ -141,5 +143,24 @@ class OrderController extends Controller
         $order = $this->orderRepository->getById($id);
         event(new OrderPlaced($order));
         return redirect()->back()->with('success','Invoice sent successfully.');
+    }
+
+    public function changeItemStatus(Request $request){
+        $cancel=[];
+
+        $order= $this->orderRepository->getById($request->order_id);
+        foreach ($request->item as $key => $item){
+            if ($item['status'] == -1){
+                $cancel[]= $key;
+            }
+            $orderItem = $this->orderItemRepository->getById($key);
+            $orderItem->status = $item['status'];
+            $orderItem->delivery_date = Carbon::parse($item['delivery_date']);
+            $orderItem->save();
+        }
+        if (count($cancel))
+            event(new OrderItemCancelEvent($order, $cancel));
+
+        return redirect()->back()->with('success','Order items status changed successfully.');
     }
 }

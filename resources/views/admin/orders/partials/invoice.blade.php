@@ -192,7 +192,16 @@
                         </td>
                         <td class="text-left">
                             <b>Shipping Info</b>
-                            {!! view('customer.pages.address.partials.full_address',['address'=>$order->address])->render() !!}
+                            @php $address = $order->address; @endphp
+                            <address>
+                                <strong>House/Flat No. :</strong> {{ $address->house_or_flat_no??null }}<br/>
+                                <strong>Address :</strong> {{ $address->address_line_1??null }}.<br/>
+                                {{ $address->address_line_2??null }}.<br/>
+                                <strong>City:</strong> {{ $address->city->name??null }}<br>
+                                <strong>Country:</strong> {{ $address->country->name??null }}<br/>
+                                <strong>Postcode :</strong> {{ $address->post_code??null }}<br>
+                                <strong>Contact :</strong> {{ $address->receiver_phone??null }}
+                            </address>
                         </td>
                         <td>
                             <b>To</b><br>

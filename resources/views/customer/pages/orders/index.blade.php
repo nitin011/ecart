@@ -38,11 +38,6 @@
                                                 <div class="card-header" id="heading-{{ $order->order_id }}">
                                                     <div class="row align-items-center">
                                                         <div class="col-11">
-                                                            <b class="mr-1 border-right">{{ $order->orderItems[0]->variant->product->product_name??null }}
-                                                                @if($order->orderItems->count() > 1)
-                                                                    and {{ $order->orderItems->count() }} items more.
-                                                                @endif
-                                                            </b>
                                                             <span
                                                                 class="text-secondary border-right pr-2">ORDER ID #{{ $order->order_id }}</span>
                                                             <span
@@ -109,9 +104,8 @@
                                                                 <div class="card mt-3">
                                                                     <div class="card-body">
                                                                         @foreach($order->orderItems as $item)
-                                                                            <div
-                                                                                class="row border-bottom pb-3">
-                                                                                <div class="col-md-3">
+                                                                            <div class="row border-bottom pb-3">
+                                                                                <div class="col-md-2">
                                                                                     <div class="order-img">
                                                                                         <a href="{{ route('customer.product.show',$item->product_variant_id) }}">
                                                                                             <img
@@ -121,41 +115,45 @@
                                                                                         </a>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-5">
+                                                                                <div class="col-md-4">
                                                                                     <a href="{{ route('customer.product.show',$item->product_variant_id) }}"
                                                                                        class="text-dark h4 font-weight-bold mb-3 d-block">
-                                                                                        {{ $item->title }}
+                                                                                        {{ $item->variant->product->product_name }}
                                                                                     </a>
                                                                                     <p class="mb-0">Quantity : <span
                                                                                             class="text-dark">{{ $item->quantity_value.''.$item->quantity_unit }}</span>
                                                                                     </p>
-                                                                                    <p class="mb-0">Order Status : <span
+                                                                                    <p class="mb-0">Product Status : <span
                                                                                             class="text-dark">
-                                                                            @switch($order->order_status)
-                                                                                                @case('completed')
-                                                                                                @php($badgeColor = 'success')
+                                                                            @switch($item->status)
+                                                                                                @case(0)
+                                                                                                @php $badgeColor = 'warning'; $status='On Hold'; @endphp
                                                                                                 @break
-                                                                                                @case('rejected')
-                                                                                                @case('canceled')
-                                                                                                @php($badgeColor = 'danger')
+                                                                                                @case(-1)
+                                                                                                @php $badgeColor = 'danger'; $status='Cancel'; @endphp
                                                                                                 @break
-                                                                                                @default
-                                                                                                @php($badgeColor = 'warning')
+                                                                                                @case(1)
+                                                                                                @php $badgeColor = 'info'; $status='In Stock'; @endphp
+                                                                                                @break
                                                                                             @endswitch
                                                                             <span class="badge badge-{{ $badgeColor }}">
-                                                                            {{ ucfirst(\App\Models\Order::ORDER_STATUS[strtolower(\Illuminate\Support\Str::slug($order->order_status,'_'))]) }}
+                                                                                    {{ $status }}
                                                                                 </span>
                                                                         </span>
                                                                                     </p>
-                                                                                    <p class="mb-0">Order Date : <span
-                                                                                            class="text-dark">{{ formatDate($order->order_date,'d M Y')  }}</span>
+                                                                                    <p class="mb-0">Delivery Date : <span
+                                                                                            class="text-dark">{{ formatDate($item->delivery_date,'d M Y')  }}</span>
                                                                                     </p>
                                                                                 </div>
-                                                                                <div
-                                                                                    class="col-md-4 text-md-center my-auto">
-                                                                                    <p class="mb-0">Per Unit Price :
+                                                                                <div class="col-md-3 text-md-center my-auto">
+                                                                                    <p class="mb-0">Per {{$item->quantity_unit}} Price :
                                                                                         <span
                                                                                             class="text-dark">{{ $currency->currency_sign }} {{ $item->price }}</span>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="col-md-3 text-md-center my-auto">
+                                                                                    <p class="mb-0">Total Price :
+                                                                                        <span class="text-dark"> {{ formatPrice($item->price * $item->quantity_value) }}</span>
                                                                                     </p>
                                                                                 </div>
                                                                             </div>

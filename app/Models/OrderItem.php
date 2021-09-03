@@ -14,7 +14,7 @@ class OrderItem extends Model
     protected $table = 'order_items';
     protected $fillable = ['id', 'order_id', 'product_variant_id', 'quantity_value',
         'quantity_unit', 'mrp', 'price', 'short_description',
-        'description', 'variant_image', 'extra_data', 'created_at', 'updated_at', 'deleted_at'];
+        'description', 'variant_image', 'extra_data', 'created_at', 'updated_at', 'deleted_at','status','delivery_date'];
 
     /**
      *  MUTATORS

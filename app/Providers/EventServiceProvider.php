@@ -5,11 +5,13 @@ namespace App\Providers;
 use App\EventListeners\OrderCancelEmailToCustomerHandler;
 use App\EventListeners\OrderConfirmEmailToCustomerHandler;
 use App\EventListeners\OrderDeliveredEmailToCustomerHandler;
+use App\EventListeners\OrderItemCancelListener;
 use App\EventListeners\OrderShippedEmailToCustomerHandler;
 use App\EventListeners\WelcomeAdminUserHandler;
 use App\EventListeners\WelcomeCustomerUserHandler;
 use App\Events\OrderCancelled;
 use App\Events\OrderDelivered;
+use App\Events\OrderItemCancelEvent;
 use App\Events\OrderPlaced;
 use App\Events\OrderShipped;
 use App\Events\WelcomeAdminUser;
@@ -53,6 +55,10 @@ class EventServiceProvider extends ServiceProvider
 
         OrderDelivered::class => [
             OrderDeliveredEmailToCustomerHandler::class,
+        ],
+
+        OrderItemCancelEvent::class =>[
+            OrderItemCancelListener::class
         ],
 
     ];

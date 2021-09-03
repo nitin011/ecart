@@ -51,15 +51,17 @@ class EmailService
             $replace_array = $key_array = [];
             if (!empty($template_variables)) {
                 foreach ($template_variables as $key => $template_variable) {
-                    $key_array[] = "#" . $key . "#";
+                    $key_array[] = $key;
                     $replace_array[] = (isset($dynamic_data[trim($key, '#')])) ? $dynamic_data[trim($key, '#')] : '';
                 }
             }
+
             // Email Template content get and replace variable with user value
             $email_data = EmailTemplates::query()->where('action', $template)->first();
             $subject = isset($mail_params_array['subject']) ? $mail_params_array['subject'] : $email_data->subject;
             $subject = str_replace($key_array, $replace_array, $subject);
             $content = str_replace($key_array, $replace_array, $email_data->content);
+            //dd($content);
             $content_data = ['email_content' => $content];
             try {
                 Mail::send('emails.sample', $content_data, function ($message) use ($to, $from, $from_name, $subject, $file) {

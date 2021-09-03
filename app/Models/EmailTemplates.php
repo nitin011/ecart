@@ -26,5 +26,6 @@ class EmailTemplates extends Model
         "order_shipped_email_to_customer" => "Order shipped email to customer",
         "order_cancel_email_to_customer" => "Order cancel email to customer",
         "order_delivered_email_to_customer" => "Order delivered email to customer",
+        "order_item_cancel_email_to_customer" => "Order item cancel email to customer",
     ];
 }

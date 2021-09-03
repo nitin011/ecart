@@ -64,5 +64,15 @@ return [
         'ARRIVING_DATE' => 'Package arriving Date',
         'EMAIL_UNSUBSCRIBE_LINK' => 'Email Unsubscribe link.'
     ],
+
+    "order_item_cancel_email_to_customer" => [
+        'NAME' => 'Name of the User',
+        //'MAIL_USERNAME' => 'Email Username',
+        'APP_URL' => env('APP_URL'),
+        'APP_NAME' => env('APP_NAME'),
+        'EMAIL_UNSUBSCRIBE_LINK' => 'Email Unsubscribe link.',
+        'ORDER_ID' => 'Order Id',
+        'PRODUCT_LIST'=>'Product List'
+    ]
 ];
 
