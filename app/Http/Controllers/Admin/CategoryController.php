@@ -34,6 +34,7 @@ class CategoryController extends Controller
             ->leftJoin('categories as catt', 'categories.parent', '=', 'catt.cat_id')
             ->select('categories.*', 'catt.title as tttt')
             ->paginate(10);
+
         return view('admin.category.list', compact('title', "admin", "logo", "category"));
     }
 

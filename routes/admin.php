@@ -74,10 +74,15 @@ Route::prefix('admin')->group(function () {
          * Orders Module Routes
          */
         Route::resource('order', 'OrderController', ['as' => 'admin']);
+        Route::get('order/create','OrderController@getCreate')->name('admin.order.get.create');
+        Route::post('order/create','OrderController@postCreate')->name('admin.order.post.create');
         Route::post('order-item/change-status', 'OrderController@changeItemStatus')->name('admin.order.item.status');
         Route::get('order-invoice/print/{order_id}', 'OrderController@printInvoice')->name('admin.order.print-invoice');
         Route::get('order-invoice/download/{order_id}', 'OrderController@downloadInvoice')->name('admin.order.download-invoice');
         Route::get('order-invoice/resend/{order_id}', 'OrderController@resendInvoice')->name('admin.order.resend-invoice');
+        Route::post('order/products', 'OrderController@getProduct')->name('admin.order.get.product');
+        Route::post('order/details', 'OrderController@getOrderDetails')->name('admin.order.get.details');
+        Route::post('order/user/address', 'OrderController@getUserAddress')->name('admin.order.user.address');
 
 ///////Delivery Boy////////
         Route::get('d_boy/list', 'DeliveryController@list')->name('d_boylist');

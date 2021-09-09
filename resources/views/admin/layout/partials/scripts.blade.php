@@ -17,7 +17,26 @@
 <script src="{{ asset('back-theme/v2/lib/datatables.net-dt/js/dataTables.dataTables.min.js') }}"></script>
 <script src="{{ asset('back-theme/v2/lib/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('back-theme/v2/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js') }}"></script>
-
+<script type="text/javascript" src="{{asset('user/js/toastr.min.js')}}"></script>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "3000",
+        "timeOut": "5000",
+        "extendedTimeOut": "3000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+</script>
 <script type="text/javascript">
 
     var appUrl = '{{ config('app.url') }}';

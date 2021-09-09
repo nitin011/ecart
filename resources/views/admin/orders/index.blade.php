@@ -8,6 +8,7 @@
             <div class="card border-0">
                 <div class="card-header">
                     <h3 class="mb-0 text-body">Orders List</h3>
+                    <a class="btn btn-info" style="position:absolute;top:10px;right:15px;" href="{{ route('admin.order.get.create') }}"><i class="fa fa-plus-circle"></i></a>
                 </div>
                 <div class="card-body px-0">
                     <table id="data-table" class="display responsive nowrap dataTable">

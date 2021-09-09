@@ -8,8 +8,16 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\Admin\OrderInterface;
 use App\Interfaces\Admin\OrderItemInterface;
 use App\Interfaces\Admin\OrderStatusInterface;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
+use App\Models\ProductVariant;
+use App\Repositories\ConfigurationRepository;
+use App\Repositories\Customer\CartRepository;
+use App\Repositories\Customer\CustomerRepository;
+use App\User;
+use Darryldecode\Cart\Exceptions\InvalidConditionException;
 use Illuminate\Http\Request;
 use App\Models\Address;
 use Illuminate\Support\Carbon;
@@ -18,12 +26,14 @@ use Barryvdh\DomPDF\Facade as PDF;
 class OrderController extends Controller
 {
     protected $orderItemRepository, $orderRepository, $orderStatusRepository;
+    private $configurationRepository;
 
-    public function __construct(OrderItemInterface $orderItemRepository, OrderStatusInterface $orderStatusRepository, OrderInterface $orderRepository)
+    public function __construct(OrderItemInterface $orderItemRepository, OrderStatusInterface $orderStatusRepository, OrderInterface $orderRepository, ConfigurationRepository $configurationRepository)
     {
         $this->orderItemRepository = $orderItemRepository;
         $this->orderStatusRepository = $orderStatusRepository;
         $this->orderRepository = $orderRepository;
+        $this->configurationRepository = $configurationRepository;
     }
 
     public function index(Request $request)
@@ -162,5 +172,81 @@ class OrderController extends Controller
             event(new OrderItemCancelEvent($order, $cancel));
 
         return redirect()->back()->with('success','Order items status changed successfully.');
+    }
+
+    public function getCreate(){
+        $products= Product::has('variants')->with('variants')->get();
+        return view('admin.orders.create', compact('products'));
+    }
+
+    public function getProduct(Request $request){
+        $products = ProductVariant::whereIn('varient_id', $request->products)->get();
+        $html = view('admin.orders.partials.product_table',compact('products'))->render();
+        return response()->json(['html'=>$html]);
+    }
+
+    public function getOrderDetails(Request $request){
+        $user = User::find($request->user);
+        $products= ProductVariant::whereIn('varient_id', $request->products)->get();
+        $qty= $request->qty;
+        $delivery_charge = $this->configurationRepository->getDeliveryCharge();
+        $html = view('admin.orders.partials.order_details',compact('user','products', 'qty','delivery_charge'))->render();
+        return response()->json(['html'=>$html]);
+    }
+
+    public function getUserAddress(Request $request){
+        $user = User::find($request->id);
+        $html = view('admin.orders.partials.order_user_address',compact('user'))->render();
+        return response()->json(['html'=>$html]);
+    }
+
+    public function postCreate(Request $request){
+        $user= User::find($request->user);
+        $products= ProductVariant::whereIn('varient_id', $request->products)->get();
+        $qty= $request->qty;
+        $requestData['store_id']=0;
+        $requestData['cart_id']=0;
+        $requestData['user_id']=$user->user_id;
+        $requestData['address_id']=$request->address;
+        $requestData['price_without_delivery']=$request->subTotal;
+        $requestData['sub_total']=$request->subTotal;
+        $requestData['delivery_charge'] = $this->configurationRepository->getDeliveryCharge()['value'];
+        $requestData['total_price']=$request->total;
+        $requestData['coupon_discount']=0.0;
+        $requestData['coupon_id']=0;
+        $requestData['total_products_mrp']=$request->mrp;
+        $requestData['payment_method']='offline + admin';
+        $requestData['time_slot']='Anytime';
+        $requestData['delivery_date']= \Carbon\Carbon::now()->addDays(2)->toDateString();
+        $requestData['order_date'] = \Carbon\Carbon::now()->toDateString();
+        $requestData['transaction_info'] = null;
+
+        $order= Order::create($requestData);
+
+        foreach ($products as $product){
+            $extra=[
+                'id'=>$product->varient_id,
+                'name'=>$product->product->product_name,
+                'price'=>$product->product->price,
+                'quantity'=>$qty[$product->varient_id],
+                'attributes'=>[],
+                'conditions'=>[],
+                'associatedModel'=>$product->toArray(),
+            ];
+            OrderItem::create([
+                'order_id' => $order->order_id,
+                'product_variant_id' => $product->varient_id,
+                'quantity_value' => ($qty[$product->varient_id] * $product->quantity),
+                'quantity_unit' => $product->unit,
+                'mrp' => $product->mrp,
+                'price' => $product->price,
+                'short_description' => $product->short_description,
+                'description' => $product->description,
+                'variant_image' => $product->varient_image,
+                'extra_data' => json_encode($extra)
+            ]);
+        }
+
+        return redirect()->route('admin.order.index')->with('success','Manually order is created.');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -11,6 +12,14 @@ class UserController extends Controller
 {
     public function list(Request $request)
     {
+        if ($request->ajax()){
+            //$query = NewsletterSubscribers::select(['id', 'email as text']);
+            $query= User::select(['user_id as id', 'user_email as text'])->where(['status'=>1, 'block'=>0, 'is_verified'=>1])->orderBy('reg_date', 'desc');
+            if ($request->filled('search')) {
+                $query->where('user_email', 'LIKE', '%' . $request->input('search') . '%');
+            }
+            return $query->paginate(10)->toJson();
+        }
         $users = DB::table('users')
             ->orderBy('reg_date', 'desc')
             ->paginate(20);

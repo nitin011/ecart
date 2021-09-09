@@ -8,7 +8,7 @@
     <!-- Meta -->
     <meta name="description" content="{{ config('app.name') }}">
     <meta name="author" content="{{ config('app.author') }}">
-    <title>{{ config('app.name') }} | Admin panel</title>
+    <title>{{ config('app.name') }} | @yield('page_title')</title>
     @include('admin.layout.partials.styles')
     @yield('header_styles')
     <livewire:styles/>
