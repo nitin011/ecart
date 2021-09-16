@@ -11,6 +11,8 @@ interface ProductInterface
 {
     public function getAll($perPage = null);
 
+    public function getAllBySorting($column, $sort, $perPage= null);
+
     public function getTrendingProducts();
 
     public function getTrendingNProducts($perPage = 10);
@@ -25,9 +27,13 @@ interface ProductInterface
 
     public function getProductsBySearchAll($string, $perPage = null);
 
+    public function getProductsBySearchAllSorting($string, $column, $sort, $perPage = null);
+
     public function getProductsByCategory($category_id, $string = null, $perPage = null, $ignored_products = null);
 
     public function getRandomProducts($count = 10);
 
     public function getByCategoryId($cat_id, $perPage = null);
+
+    public function getByCategoryIdSorting($cat_id, $column, $sort, $perPage = null);
 }

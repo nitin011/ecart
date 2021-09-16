@@ -37,17 +37,16 @@
                                         <div class="product_header mb-30">
                                             <div class="product_header_left">
                                                 <div class="custom_select">
-                                                    <select class="form-control form-control-sm">
-                                                        <option value="order">Default sorting</option>
-                                                        <option value="popularity">Sort by popularity</option>
-                                                        <option value="date">Sort by newness</option>
-                                                        <option value="price">Sort by price: low to high</option>
-                                                        <option value="price-desc">Sort by price: high to low
-                                                        </option>
-                                                    </select>
+                                                    <form id="filter" method="get" action="">
+                                                        <select class="form-control form-control-sm" id="sort_by">
+                                                            <option value="">Sort by</option>
+                                                            <option value="price:asc" {{ request()->get('sort_by') =='price:asc'?'selected':'' }}>Sort by price: low to high</option>
+                                                            <option value="price:desc" {{ request()->get('sort_by') =='price:desc'?'selected':'' }}>Sort by price: high to low</option>
+                                                        </select>
+                                                    </form>
                                                 </div>
                                             </div>
-                                            <div class="product_header_right">
+                                            {{--<div class="product_header_right">
                                                 <div class="products_view">
                                                     <a href="javascript:Void(0);" class="shorting_icon grid active"><i
                                                             class="ti-view-grid"></i></a>
@@ -60,7 +59,7 @@
                                                         <option value="18">18</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div>--}}
                                         </div>
                                     </div>
 
@@ -80,6 +79,11 @@
     <script>
         $(document).ready(function () {
             $('.toggle-nav').trigger('click');
+
+            $('#sort_by').on('change', function () {
+                let url= '{{ route("customer.products.by-search") }}?search={{$search}}&sort_by='+this.value;
+                window.location.href= url;
+            });
         });
     </script>
     <script>
@@ -104,6 +108,7 @@
                 }
             });
         }
+
     </script>
 
 @endpush

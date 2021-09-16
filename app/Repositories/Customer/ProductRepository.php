@@ -14,7 +14,11 @@ class ProductRepository implements ProductInterface
 
     public function getAll($perPage = null)
     {
-        return Product::whereHas('variants')->paginate($perPage ?? 10);
+        return ProductVariant::whereHas('product')->paginate($perPage ?? 10);
+    }
+
+    public function getAllBySorting($column, $sort, $perPage= null){
+        return ProductVariant::whereHas('product')->orderBy($column, $sort)->paginate($perPage ?? 10);
     }
 
     public function getTrendingProducts()
@@ -104,10 +108,22 @@ class ProductRepository implements ProductInterface
     public function getProductsBySearchAll($string, $perPage = null)
     {
         $this->search_string = $string;
-        $products = Product::whereHas('variants')->where('product_name', 'LIKE', "%$string%")
+        $p_ids = Product::whereHas('variants')->where('product_name', 'LIKE', "%$string%")
             ->orWhereHas('category', function ($query) use ($string) {
                 $query->where('title', 'LIKE', "%$string%");
-            });
+            })->pluck('product_id')->toArray();
+        $products = ProductVariant::whereHas('product')->whereIn('product_id', $p_ids);
+        return $perPage ? $products->paginate($perPage) : $products->get();
+    }
+
+    public function getProductsBySearchAllSorting($string, $column, $sort, $perPage = null)
+    {
+        $this->search_string = $string;
+        $p_ids = Product::whereHas('variants')->where('product_name', 'LIKE', "%$string%")
+            ->orWhereHas('category', function ($query) use ($string) {
+                $query->where('title', 'LIKE', "%$string%");
+            })->pluck('product_id')->toArray();
+        $products = ProductVariant::whereHas('product')->whereIn('product_id', $p_ids)->orderBy($column, $sort);
         return $perPage ? $products->paginate($perPage) : $products->get();
     }
 
@@ -131,12 +147,20 @@ class ProductRepository implements ProductInterface
 
     public function getByCategoryId($cat_id, $perPage = null)
     {
-        $products = Product::whereHas('variants')->where('cat_id', $cat_id);
+        $p_ids = Product::whereHas('variants')->where('cat_id', $cat_id)->pluck('product_id')->toArray();
+        $products = ProductVariant::whereIn('product_id', $p_ids);
         if (!is_null($perPage)) {
             $products = $products->paginate($perPage);
         } else {
             $products = $products->get();
         }
+        return $products;
+    }
+
+    public function getByCategoryIdSorting($cat_id, $column, $sort, $perPage = null){
+        $p_ids = Product::whereHas('variants')->where('cat_id', $cat_id)->pluck('product_id')->toArray();
+        $products = ProductVariant::whereIn('product_id', $p_ids)->orderBy($column, $sort);
+        $products = $products->paginate($perPage ?? 10);
         return $products;
     }
 

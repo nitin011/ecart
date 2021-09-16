@@ -24,7 +24,13 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $products = $this->productRepository->getAll(8);
+        if ($request->filled('sort_by')){
+            $sortby= explode(':',$request->get('sort_by'));
+
+            $products = $this->productRepository->getAllBySorting($sortby[0], $sortby[1], 8);
+        }else{
+            $products = $this->productRepository->getAll(8);
+        }
         if ($request->ajax()) {
             if (!$products->isEmpty()) {
                 $view = view('web.pages.product.partial.product_block', compact('products'))->render();
@@ -37,7 +43,12 @@ class ProductController extends Controller
     public function bySearch(Request $request)
     {
         $search = $request->search;
-        $products = $this->productRepository->getProductsBySearchAll($search, 8);
+        if ($request->filled('sort_by')){
+            $sortby= explode(':',$request->get('sort_by'));
+            $products =$this->productRepository->getProductsBySearchAllSorting($search, $sortby[0], $sortby[1], 8);
+        }else{
+            $products = $this->productRepository->getProductsBySearchAll($search, 8);
+        }
         if (request()->ajax()) {
             if (!$products->isEmpty()) {
                 $view = view('web.pages.product.partial.product_block', compact('products'))->render();
@@ -52,7 +63,13 @@ class ProductController extends Controller
     {
         $categories = $this->categoryRepository->getAll();
         $current_category = $this->categoryRepository->getById($category_id);
-        $products = $this->productRepository->getByCategoryId($category_id, 8);
+
+        if (request()->filled('sort_by')){
+            $sortby= explode(':',request()->get('sort_by'));
+            $products= $this->productRepository->getByCategoryIdSorting($category_id, $sortby[0], $sortby[1], 8);
+        }else{
+            $products = $this->productRepository->getByCategoryId($category_id, 8);
+        }
         if (request()->ajax()) {
             if (!$products->isEmpty()) {
                 $view = view('web.pages.product.partial.product_block', compact('products'))->render();
