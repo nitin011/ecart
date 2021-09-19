@@ -24,10 +24,10 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->filled('sort_by')){
-            $sortby= explode(':',$request->get('sort_by'));
-
-            $products = $this->productRepository->getAllBySorting($sortby[0], $sortby[1], 8);
+        //dd($request->all());
+        if ($request->has('filter')){
+            $filter= $request->get('filter');
+            $products = $this->productRepository->getAllBySorting($filter, 8);
         }else{
             $products = $this->productRepository->getAll(8);
         }
@@ -43,9 +43,9 @@ class ProductController extends Controller
     public function bySearch(Request $request)
     {
         $search = $request->search;
-        if ($request->filled('sort_by')){
-            $sortby= explode(':',$request->get('sort_by'));
-            $products =$this->productRepository->getProductsBySearchAllSorting($search, $sortby[0], $sortby[1], 8);
+        if ($request->has('filter')){
+            $filter= $request->get('filter');
+            $products =$this->productRepository->getProductsBySearchAllSorting($search, $filter, 8);
         }else{
             $products = $this->productRepository->getProductsBySearchAll($search, 8);
         }
@@ -64,9 +64,9 @@ class ProductController extends Controller
         $categories = $this->categoryRepository->getAll();
         $current_category = $this->categoryRepository->getById($category_id);
 
-        if (request()->filled('sort_by')){
-            $sortby= explode(':',request()->get('sort_by'));
-            $products= $this->productRepository->getByCategoryIdSorting($category_id, $sortby[0], $sortby[1], 8);
+        if (request()->has('filter')){
+            $filter= request()->get('filter');
+            $products= $this->productRepository->getByCategoryIdSorting($category_id, $filter, 8);
         }else{
             $products = $this->productRepository->getByCategoryId($category_id, 8);
         }

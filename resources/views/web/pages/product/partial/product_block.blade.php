@@ -70,8 +70,14 @@
     </div>
 </div>
 @endforeach
-@if($products->total() > 8)
+@if($products->total() == 0)
+    <h2 class="text-center mb-50" style="width: 100%">Sorry, no result found!</h2>
+@endif
+@if(!is_null($products->nextPageUrl()))
 <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 text-center mt-20 mb-40" id="show_more">
-    <button class="btn btn-primary" type="button" onclick="loadMore()" data-url="{{$products->nextPageUrl()}}{{ request()->filled('search')?'&search='.request()->get('search'):'' }}{{ request()->filled('sort_by')?'&sort_by='.request()->get('sort_by'):'' }}">Show More</button>
+    @php
+        $filter= request()->get('filter');
+    @endphp
+    <button class="btn btn-primary" type="button" onclick="loadMore()" data-url="{{$products->nextPageUrl()}}{{ request()->filled('search')?'&search='.request()->get('search'):'' }}{{ request()->filled('filter')?'&filter[sort_by]='.$filter['sort_by'].'&filter[min_price]='.$filter['min_price'].'&filter[max_price]='.$filter['max_price']:'' }}">Show More</button>
 </div>
 @endif

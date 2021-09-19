@@ -17,8 +17,16 @@ class ProductRepository implements ProductInterface
         return ProductVariant::whereHas('product')->paginate($perPage ?? 10);
     }
 
-    public function getAllBySorting($column, $sort, $perPage= null){
-        return ProductVariant::whereHas('product')->orderBy($column, $sort)->paginate($perPage ?? 10);
+    public function getAllBySorting($filter, $perPage= null){
+        $products = ProductVariant::whereHas('product');
+        if (!empty($filter['sort_by'])){
+            $sort = explode(':', $filter['sort_by']);
+            $products = $products->orderBy($sort[0], $sort[1]);
+        }
+        if (!empty($filter['min_price']) || !empty($filter['max_price'])){
+            $products  = $products->whereBetween('price', [$filter['min_price'], $filter['max_price']]);
+        }
+        return $products->paginate($perPage ?? 10);
     }
 
     public function getTrendingProducts()
@@ -116,14 +124,22 @@ class ProductRepository implements ProductInterface
         return $perPage ? $products->paginate($perPage) : $products->get();
     }
 
-    public function getProductsBySearchAllSorting($string, $column, $sort, $perPage = null)
+    public function getProductsBySearchAllSorting($string, $filter, $perPage = null)
     {
         $this->search_string = $string;
         $p_ids = Product::whereHas('variants')->where('product_name', 'LIKE', "%$string%")
             ->orWhereHas('category', function ($query) use ($string) {
                 $query->where('title', 'LIKE', "%$string%");
             })->pluck('product_id')->toArray();
-        $products = ProductVariant::whereHas('product')->whereIn('product_id', $p_ids)->orderBy($column, $sort);
+        $products = ProductVariant::whereHas('product')->whereIn('product_id', $p_ids);
+
+        if (!empty($filter['sort_by'])){
+            $sort = explode(':', $filter['sort_by']);
+            $products = $products->orderBy($sort[0], $sort[1]);
+        }
+        if (!empty($filter['min_price']) || !empty($filter['max_price'])){
+            $products  = $products->whereBetween('price', [$filter['min_price'], $filter['max_price']]);
+        }
         return $perPage ? $products->paginate($perPage) : $products->get();
     }
 
@@ -157,9 +173,16 @@ class ProductRepository implements ProductInterface
         return $products;
     }
 
-    public function getByCategoryIdSorting($cat_id, $column, $sort, $perPage = null){
+    public function getByCategoryIdSorting($cat_id, $filter, $perPage = null){
         $p_ids = Product::whereHas('variants')->where('cat_id', $cat_id)->pluck('product_id')->toArray();
-        $products = ProductVariant::whereIn('product_id', $p_ids)->orderBy($column, $sort);
+        $products = ProductVariant::whereIn('product_id', $p_ids);
+        if (!empty($filter['sort_by'])){
+            $sort = explode(':', $filter['sort_by']);
+            $products = $products->orderBy($sort[0], $sort[1]);
+        }
+        if (!empty($filter['min_price']) || !empty($filter['max_price'])){
+            $products  = $products->whereBetween('price', [$filter['min_price'], $filter['max_price']]);
+        }
         $products = $products->paginate($perPage ?? 10);
         return $products;
     }
