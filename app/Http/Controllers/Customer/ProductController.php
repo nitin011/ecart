@@ -6,6 +6,7 @@ use App\Interfaces\Admin\BannerInterface;
 use App\Interfaces\Admin\CategoryInterface;
 use App\Interfaces\Customer\ProductInterface;
 use App\Interfaces\Customer\ProductVariantInterface;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller

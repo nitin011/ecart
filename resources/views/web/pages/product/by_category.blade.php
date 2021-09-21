@@ -40,8 +40,8 @@
                                                     <div class="custom_select">
                                                         <select name="filter[sort_by]" class="form-control form-control-sm" onchange="$('#filter').submit();">
                                                             <option value="">Sort by Popularity</option>
-                                                            <option value="price:asc" {{ request()->get('filter')['sort_by'] =='price:asc'?'selected':'' }}>Sort by price: low to high</option>
-                                                            <option value="price:desc" {{ request()->get('filter')['sort_by'] =='price:desc'?'selected':'' }}>Sort by price: high to low</option>
+                                                            <option value="price:asc" {{ request()->get('filter')?(request()->get('filter')['sort_by'] =='price:asc'?'selected':''):'' }}>Sort by price: low to high</option>
+                                                            <option value="price:desc" {{ request()->get('filter')?(request()->get('filter')['sort_by'] =='price:desc'?'selected':''):'' }}>Sort by price: high to low</option>
                                                         </select>
 
                                                     </div>
@@ -60,8 +60,8 @@
                                                                 <div class="col-sm-6 col-xs-12">
                                                                     <h3 class="text-center">Price</h3>
                                                                     <section class="range-slider">
-                                                                        <input value="{{ request()->get('filter')['min_price'] ?? 1 }}" min="1" max="5000" step="1" type="range">
-                                                                        <input value="{{ request()->get('filter')['max_price'] ?? 5000 }}" min="1" max="5000" step="1" type="range">
+                                                                        <input value="{{ request()->get('filter')?request()->get('filter')['min_price'] : 1 }}" min="1" max="5000" step="1" type="range">
+                                                                        <input value="{{ request()->get('filter')?request()->get('filter')['max_price'] : 5000 }}" min="1" max="5000" step="1" type="range">
                                                                     </section>
                                                                     <div style="display:inline-flex; position:relative;">
                                                                         <input class="form-control" type="text" id="min_price" readonly style="width: 45%">
